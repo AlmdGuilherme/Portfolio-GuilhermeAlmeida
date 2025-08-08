@@ -1,0 +1,11 @@
+.data_return{
+  display: flex;
+  height: 100dvh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  bottom: 0%;
+  font-size: 1.2rem;
+  color: #fff;
+  position: fixed;
+}

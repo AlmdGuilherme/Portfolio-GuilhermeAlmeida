@@ -5,6 +5,8 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 const supabase = require('./supabaseClient.js');
+const { aboubtPage } = require('./Services/aboutMeService.js');
+const { formAcadPage } = require('./Services/formacaoAcademicaService.js');
 
 let allowedOrigins = [
     'https://almdguilherme.github.io',
@@ -25,6 +27,36 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server rodando na porta ${PORT}`);
+});
+
+app.get('/api/aboutMePage', async (req, res) => {
+    try {
+        const data = await aboubtPage()
+
+        if (!data || !data.projeto || !data.certificados) {
+            return res.status(404).json({error: 'Dados não encontrados'})
+        }
+
+        res.status(200).json(data)
+    } catch (error) {
+        console.error('Erro inesperado ao buscar projetos e certificados:', error)
+        res.status(500).json({error: 'Erro no servidor interno!'})
+    }
+})
+
+app.get('/api/formacao-academica', async (req, res) => {
+    try {
+        const data = await formAcadPage()
+
+        if (!data || !data.formacao || !data.certificados) {
+            return res.status(404).json({error: 'Dados não encontrados'})
+        }
+
+        res.status(200).json(data)
+    } catch (error) {
+        console.error('Erro inesperado ao buscar formações e certificados:', error)
+        res.status(500).json({error: 'Erro no servidor interno!'})
+    }
 });
 
 app.get('/api/habilidades', async (req, res) => {
@@ -49,50 +81,6 @@ app.get('/api/habilidades', async (req, res) => {
     }
 });
 
-app.get('/api/formacao-academica', async (req, res) => {
-    try {
-        const { data, error } = await supabase
-            .from('FormacoesInfos')
-            .select('form_id, form_name, local_form, periodo_form, descricao_form');
-        if (error) {
-            console.error('Erro ao buscar formações acadêmicas do supabase: ', error);
-            return res.status(500).json({ error: error.message });
-        }
-        const formacoesFormatadas = data.map(item => ({
-            id: item.form_id,
-            nome: item.form_name,
-            local: item.local_form,
-            periodo: item.periodo_form,
-            descricao: item.descricao_form
-        }));
-        res.status(200).json(formacoesFormatadas);
-    } catch (error) {
-        console.error('Erro inesperado na rota /api/formacao-academica: ', error);
-        res.status(500).json({ error: 'Erro interno do servidor.' });
-    }
-});
-
-app.get('/api/certificados', async (req, res) => {
-    try {
-        const { data, error } = await supabase
-            .from('CertificadosInfos')
-            .select('cert_id, cert_image, cert_type, cert_descricao');
-        if (error) {
-            console.error('Erro ao buscar informações dos certificados: ', error);
-            return res.status(500).json({ error: error.message });
-        }
-        const certiticadosFormatados = data.map(item => ({
-            id: item.cert_id,
-            image: item.cert_image,
-            tipo: item.cert_type,
-            descricao: item.cert_descricao
-        }));
-        res.status(200).json(certiticadosFormatados);
-    } catch (error) {
-        console.error('Erro inesperado na rota /api/certificados: ', error);
-        res.status(500).json({ error: 'Erro interno do servidor.' });
-    }
-});
 
 app.get('/api/projetos', async (req, res) => {
     try {

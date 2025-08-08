@@ -1,8 +1,11 @@
-Frontend/node_modules/
-Backend/node_modules/
-Backend/vercel/
+Frontend/node_modules
+Backend/node_modules
+Backend/node_modules/@vercel/build-utils/*
+Backend/vercel
 
 Frontend/build/ 
+
+/node_modules
 
 .env
 .env.local

@@ -1,107 +1,129 @@
-.cert_card{
-  height: 10rem;
-  width: 25rem;
-  background-color: #252525;
-  padding: .7rem;
+.card{
+  width: 17rem;
+  background: #1C1A1D;
   border-radius: .5rem;
-  display: flex;
-  gap: 1rem;
+  position: relative;
+  cursor: pointer;
 }
 
-.cert_image{
-  width: 50%;
+@property --angle{
+ syntax: "<angle>";
+ initial-value: 0deg;
+ inherits: false;
+}
+
+.card::after, .card::before{
+  --angle: 0deg;
+  content: '';
+  position: absolute;
+  height: 103%;
+  width: 101%;
+  background-image: conic-gradient(from var(--angle), transparent 90%, #F64349, #1C1A1D);
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50.25%;
+  border-radius: .5rem;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+.card::before{
+  filter: blur(1rem);
+  opacity: .8;
+}
+
+.card_components{
+  width: 100%;
   height: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  align-self: first baseline;
-  border-radius: .3rem;
+  display: flex;
+  align-items: center;
 }
 
-.infos_cert{
+.card_image{
+  border-radius: .5rem;
+  width: 30%;
+}
+
+.card_subcomponents{
+  width: 70%;
   display: flex;
-  justify-content: space-around;
+  height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.card_infos{
+  width: fit-content;
+  display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 50%;
-  gap: .5rem;
+  align-items: center;
+}
+
+.card_local {
+  align-self: center;
 }
 
 .area{
-  position: static;
-  top: 0;
-  width: fit-content;
-  cursor: default;
-  font-size: .9rem;
   font-weight: 600;
-  padding: .2rem .5rem;
+  padding: .25rem .5rem;
+  width: fit-content;
   border-radius: 1rem;
+  font-size: .9rem;
 }
 
-.cert_desc{
-  color: #fff;
-  font-size: 1rem;
-  font-size: 500;
-  margin-bottom: 1rem;
-  /* align-self: center; */
-  text-align: left;
-  /* align-self: end; */
+.html_Class{
+  color: #ff6200;
+  background-color: rgba(255, 98, 0, 0.5);
 }
 
-.html_Class{  
-  background-color: rgba(255, 119, 23, 0.4);
-  color: rgb(255, 106, 0);
+.css_Class{
+  color: #0004ff;
+  background-color: rgba(0, 4, 255, 0.5);
 }
 
-.css_Class{  
-  background-color: rgba(23, 182, 255, 0.4);
-  color: rgb(23, 169, 247);
+.js_Class{
+  color: #d9ff00;
+  background-color: rgba(217, 255, 0, 0.5);
 }
 
-.js_Class{  
-  background-color: rgba(255, 251, 43, 0.4);
-  color: rgb(255, 248, 16);
+.py_Class{
+  color: #0051ff;
+  background-color: rgba(0, 81, 255, 0.5);
 }
 
-.py_Class{  
-  background-color: rgba(30, 15, 143, 0.4);
-  color: rgb(30, 2, 255);
+.ts_Class{
+  color: #4c25fa;
+  background-color: rgba(47, 0, 255, 0.5);
 }
 
-.ts_Class{  
-  background-color: rgba(0, 46, 139, 0.4);
-  color: rgb(31, 31, 254);
+.sass_Class{
+  color: #c800ff;
+  background-color: rgba(200, 0, 255, 0.5);
 }
 
-.sass_Class{  
-  background-color: rgba(120, 0, 139, 0.4);
-  color: rgb(221, 0, 255);
-}
+@media screen and (max-width: 640px){
+  .card{
+    width: 9rem;
+    height: 3rem;
+  }
 
-/* @media screen and (min-width:320px) and (max-width:375px) {
-  .cert_card{
-    height: 15rem;
-    width: 14rem;
+  .area{
+    font-size: .7rem;
+    padding: .15rem .2rem;
+  }
+
+  .card_local{
+    /* display: none; */
+    font-size: .8rem;
   }
 }
-
-@media screen and (min-width:375px) and (max-width:425px){
-  .cert_card{
-    height: 18rem;
-    width: 17.5rem;
-  }
-}
-
-@media screen and (min-width:425px) and (max-width:768px){
-  .cert_card{
-    height: 20rem;
-    width: 20.5rem;
-  }
-}
-
-/* @media screen and (min-width:1024px)and (max-width:1024px){
-  .cert_card{
-    height: 20rem;
-    width: 18rem;
-  }
-} */ 
-

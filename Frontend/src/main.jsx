@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 import reactDoom from 'react-dom/client'
 import App from './App.jsx'
 

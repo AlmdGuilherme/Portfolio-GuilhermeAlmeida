@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-const repoName = 'portfolio-2dsm'; // Substitua pelo nome do seu repositório
+const repoName = 'Portfolio-GuilhermeAlmeida'; 
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: `/${repoName}/`, // Adicione a base URL aqui
+  base: `/${repoName}/`, 
   build: {
     rollupOptions: {
       output: {

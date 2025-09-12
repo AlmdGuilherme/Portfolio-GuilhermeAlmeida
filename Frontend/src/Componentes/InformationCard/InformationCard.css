@@ -1,0 +1,24 @@
+.information-card{
+  height: auto;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: justify;
+  justify-content: center;
+  border-bottom: .1px solid rgba(69, 0, 173, 0.6);
+}
+
+.information-card > h2{
+  align-self: baseline;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+
+.information-card > p{
+  font-size: .9rem;
+}

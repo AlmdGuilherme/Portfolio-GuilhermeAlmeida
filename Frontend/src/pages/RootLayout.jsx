@@ -1,28 +1,37 @@
-import { Outlet} from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar";
-import styles from './root.module.css'
+import { Outlet } from "react-router-dom";
+import Navbar from "../Componentes/Navbar/Navbar";
+import styles from "./root.module.css";
 import { ScreenWidth } from "../hooks/ScreenWidth";
 
-export default function RootLayout(){
+export default function RootLayout() {
+  const screen = ScreenWidth();
   // const [IsOpen, setIsOpen] = useState(false)
 
   // const navbarAction = () => {
   //   setIsOpen (state => !state)
   // }
 
-  return(
+  return (
     <>
-      <header className={styles.navigation}>
-        {/* <span className={`${styles.navbarMenu} ${IsOpen ? styles.openMenu : null}`} onClick={navbarAction}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </span> */}
-        <Navbar/>
-      </header>
-      <main className={styles.content}>
-        <Outlet />
-      </main>
+      {screen < 768 ? (
+        <>
+          <main className={styles.content}>
+            <Outlet />
+          </main>
+          <footer className={styles.navigation}>
+            <Navbar />
+          </footer>
+        </>
+      ) : (
+        <>
+          <header className={styles.navigation}>
+            <Navbar />
+          </header>
+          <main className={styles.content}>
+            <Outlet />
+          </main>
+        </>
+      )}
     </>
-  )
+  );
 }

@@ -7,6 +7,7 @@ const app = express();
 const supabase = require('./supabaseClient.js');
 const { aboubtPage } = require('./Services/aboutMeService.js');
 const { formAcadPage } = require('./Services/formacaoAcademicaService.js');
+const { habilidadesPage } = require('./Services/habilidadesServices.js');
 
 let allowedOrigins = [
     'https://almdguilherme.github.io',
@@ -61,23 +62,16 @@ app.get('/api/formacao-academica', async (req, res) => {
 
 app.get('/api/habilidades', async (req, res) => {
     try {
-        const { data, error } = await supabase
-            .from('HabilidadesInfos')
-            .select('skill_id, rgba, iconClass, skill_name');
-        if (error) {
-            console.error('Erro ao buscar habilidades do Supabase:', error);
-            return res.status(500).json({ error: error.message });
+        const data = await habilidadesPage()
+
+        if (!data) {
+            return res.status(404).json({error: 'Dados não encontrados'})
         }
-        const habilidadesFormatadas = data.map(item => ({
-            id: item.skill_id,
-            rgba: item.rgba,
-            iconClass: item.iconClass,
-            nome: item.skill_name
-        }));
-        res.status(200).json(habilidadesFormatadas);
+
+        res.status(200).json(data)
     } catch (error) {
-        console.error('Erro inesperado na rota /api/habilidades: ', error);
-        res.status(500).json({ error: 'Erro interno do servidor.' });
+        console.error('Erro inesperado ao buscar habilidades:', error)
+        res.status(500).json({error: 'Erro inesperado no servidor interno!'})
     }
 });
 

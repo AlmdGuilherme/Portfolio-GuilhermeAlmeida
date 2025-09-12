@@ -5,7 +5,7 @@ export const formAcadPage = async () => {
     const {data: formData, error: formError} = await supabase
     .from('FormacoesInfos')
     .select('*')
-    .order('form_id', {ascending: true})
+    .order('periodo_form', {ascending: true})
 
     if (formError) {
       console.log('Erro ao buscar formações acadêmicas do Supabase', formError)
@@ -14,6 +14,7 @@ export const formAcadPage = async () => {
     const formacoesFormatadas = formData.map(form => ({
       id: form.form_id,
       nome: form.form_name,
+      area: form.area_formacao,
       local: form.local_form,
       periodo: form.periodo_form,
       descricao: form.descricao_form

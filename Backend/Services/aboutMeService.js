@@ -6,30 +6,25 @@ export const aboubtPage = async () => {
             .from('ProjetosInfos')
             .select(`
                 proj_id,
-                proj_situation,
-                proj_name,
                 proj_image,
-                proj_team,
-                proj_descricao,
                 proj_link
             `)
-            .eq('proj_id', 2)
-            .single();
+            .order('proj_id', {ascending: true})
 
         if (projetoError) {
             console.error('Erro ao buscar projeto do Supabase:', projetoError);
             throw projetoError;
         }
 
-        const projetoFormatado = {
-            id: projetoData.proj_id,
-            situation: projetoData.proj_situation,
-            name: projetoData.proj_name,
-            image: projetoData.proj_image,
-            team: projetoData.proj_team,
-            descricao: projetoData.proj_descricao,
-            link: projetoData.proj_link,
-        };
+        const projetoFormatado = projetoData.map(proj => ({
+            id: proj.proj_id,
+            situation: proj.proj_situation,
+            name: proj.proj_name,
+            image: proj.proj_image,
+            team: proj.proj_team,
+            descricao: proj.proj_descricao,
+            link: proj.proj_link,
+        }))
 
         const { data: certificadosData, error: certificadosError } = await supabase
             .from('CertificadosInfos')

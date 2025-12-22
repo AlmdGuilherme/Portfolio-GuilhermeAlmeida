@@ -6,12 +6,14 @@ const path = require('path');
 const app = express();
 const supabase = require('./supabaseClient.js');
 const { aboubtPage } = require('./Services/aboutMeService.js');
-const { formAcadPage } = require('./Services/formacaoAcademicaService.js');
+const { formAcadPage, allAcademicFormation } = require('./Services/formacaoAcademicaService.js');
 const { habilidadesPage } = require('./Services/habilidadesServices.js');
+const { fetchCertificationById } = require('./Services/certificationService.js');
 
 let allowedOrigins = [
     'https://almdguilherme.github.io',
-    'http://localhost:5173'
+    'http://localhost:5173',
+    'https://dev-guilherme-almeida.vercel.app'
 ];
 
 const corsOptions = {
@@ -59,6 +61,34 @@ app.get('/api/formacao-academica', async (req, res) => {
         res.status(500).json({error: 'Erro no servidor interno!'})
     }
 });
+
+app.get('/api/formacao-academica/todas-formacoes', async (req, res)=> {
+    try {
+        const data = await allAcademicFormation()
+        if (!data) {
+            return res.status(404).json({error: 'Dados não encontrados'})
+        }
+        res.status(200).json(data)
+    } catch (error) {
+        console.error("Erro inesperado ao buscar formação acadêmica:", error)
+        res.status(500).json({error: 'Erro no servidor interno!'})
+    }
+})
+
+app.get('/api/certificado/:certId', async(req, res) => {
+    const certId = parseInt(req.params.certId);
+    try {
+        const data = await fetchCertificationById(certId)
+        if (!data) {
+            return res.status(404).json({error: 'Dados não econtrados'})
+        }
+
+        return res.status(200).json(data)
+    } catch (error) {
+        console.error('Erro inesperado ao buscar certificado:', error)
+        res.status(500).json({error: 'Erro inesperado no servidor interno!'})
+    }
+})
 
 app.get('/api/habilidades', async (req, res) => {
     try {

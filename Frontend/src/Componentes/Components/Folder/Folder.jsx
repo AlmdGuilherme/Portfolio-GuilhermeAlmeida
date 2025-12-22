@@ -43,9 +43,9 @@ const Folder = ({
   );
 
   const folderBackColor = darkenColor(color, 0.08);
-  const paper1 = darkenColor("#ffffff", 0.1);
-  const paper2 = darkenColor("#ffffff", 0.05);
-  const paper3 = "#ffffff";
+  const paper1 = darkenColor("transparent", 0.1);
+  const paper2 = darkenColor("transparent", 0.05);
+  const paper3 = "transparent";
 
   const handleClick = () => {
     setOpen((prev) => !prev);

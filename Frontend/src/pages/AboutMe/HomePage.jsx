@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import DarkVeil from "../../Componentes/Backgrounds/DarkVeil/DarkVeil";
 import ProfileCard from "../../Componentes/ProfileCard/ProfileCard";
-import Reveal from "../../Componentes/Reveal/Reveal";
 import Folder from "../../Componentes/Components/Folder/Folder";
 import Carousel from "../../Componentes/Components/Carousel/Carousel";
 import LogoLoop from '../../Componentes/Animations/LogoLoop/LogoLoop'
 import InformationCard from "../../Componentes/InformationCard/InformationCard";
 import MoreInfosCard from "../../Componentes/MoreInfosCard/MoreInfosCard";
 import { ScreenWidth } from "../../hooks/ScreenWidth";
+import gsw from '../../assets/gsw.png'
+import pw from '../../assets/pw.png'
+import hp from '../../assets/helpnei.png'
+import AnimatedContent from "../../Componentes/Animations/AnimatedContent/AnimatedContent";
 
 export default function HomePage() {
   const screen = ScreenWidth()
@@ -18,9 +21,9 @@ export default function HomePage() {
   if (screen <= 1024) {
     folderSize = 1.5
     carouselSize = 180
-  } else if (screen <= 950){
+  } else if (screen <= 950) {
     folderSize = 2
-  } else if (screen <= 540){
+  } else if (screen <= 540) {
     folderSize = 1.2
   }
 
@@ -47,6 +50,12 @@ export default function HomePage() {
     },
   ];
 
+  const images = [
+    <img src={hp} alt="" className="w-full h-full rounded-lg" />,
+    <img src={gsw} alt="" className="w-full h-full rounded-lg" />,
+    <img src={pw} alt="" className="w-full h-full rounded-lg" />
+  ]
+
   return (
     <>
       <div className="w-full h-auto flex flex-col overflow-hidden">
@@ -62,36 +71,55 @@ export default function HomePage() {
           id="about-me"
         >
           <div className="w-full h-auto flex items-center justify-center">
-            <Reveal>
+            <AnimatedContent
+              distance={100}
+              direction="vertical"
+              reverse={true}
+              duration={1.5}
+              ease="power3.out"
+              initialOpacity={0}
+              animateOpacity
+              scale={1}
+              threshold={.2}
+              delay={.5}
+            >
               <InformationCard
                 title="Sobre Mim"
-                information="Começei minha jornada na área da programação durante o Ensino Médio integrado ao Técninco em Informática, 
-                no Colégio Joseense, onde tive contato com o básico, porém, desenvoli um interesse enorme pela área e oportunidades. 
-                Após concluir o Ensino Médio, busquei cursos para aprender e desenvolver minhas habilidades como desenvolvedor, 
-                até conhecer a One Bit Code, onde tive e tenho a oportunidade de estudar e aprimorar minhas habilidades para me
-                tornar um desenvolvedor Full Stack e Python. Atualmente, estou cursando Desenvolvimento de Softwatre Multiplataforma na
-                Fatec-SJC, onde busco uma formação mais completa e abrangente, além de conhecer mais tecnologias, 
-                poder aprofundar o conhecimento já adquirido, desenvolver projetos práticos e ter contato com pessoas que atuam na área, 
-                me ajudando a trilhar meu caminho como desenvolvedor!"
+                information="Comecei minha jornada na área da programação durante o Ensino Médio integrado ao Técnico em Informática, no Colégio Joseense, onde tive contato com o básico, porém, desenvolvi um interesse enorme pela área e oportunidades. Após concluir o Ensino Médio, busquei cursos para aprender e desenvolver minhas habilidades como desenvolvedor, até conhecer a One Bit Code, onde tive e tenho a oportunidade de estudar e aprimorar minhas habilidades para me tornar um desenvolvedor Full Stack e Python. Atualmente, estou cursando Desenvolvimento de Software Multiplataforma na Fatec-SJC, onde busco uma formação mais completa e abrangente, além de conhecer mais tecnologias, poder aprofundar o conhecimento já adquirido, desenvolver projetos práticos e ter contato com pessoas que atuam na área, me ajudando a trilhar meu caminho como desenvolvedor!"
               />
-            </Reveal>
+            </AnimatedContent>
           </div>
-          <Reveal>
+          <AnimatedContent
+            distance={100}
+            direction="vertical"
+            reverse={false}
+            duration={1.5}
+            ease="power3.out"
+            initialOpacity={0}
+            animateOpacity
+            scale={1}
+            threshold={.2}
+            delay={.3}
+          >
             <div className="w-full h-auto flex flex items-center justify-center max-[950px]:flex-col gap-10">
-              <MoreInfosCard 
+              <MoreInfosCard
                 title="Confira meus projetos desenvolvidos até o momento!"
                 description="Uma amostra das minhas habilidades, experiência e
-                      conhecimento em ação. Explore os detalhes de cada projeto."
+                conhecimento em ação. Explore os detalhes de cada projeto."
                 ButtonText="Ver projetos"
-                component={<Folder size={folderSize} />}
+                component={<Folder
+                  size={folderSize}
+                  items={images}
+                />
+                }
               />
-              <MoreInfosCard 
+              <MoreInfosCard
                 title="Veja os certificados que adquiri ao longo do caminho!"
                 description="Registro dos meus cursos e especializações, reforçando meu
                     conhecimento em diversas áreas."
-                redirect="/Portfolio-GuilhermeAlmeida/formacao-academica"
+                redirect="/formacao-academica"
                 ButtonText="Ver certificados"
-                component={                
+                component={
                   <Carousel
                     items={items}
                     autoplay={true}
@@ -102,7 +130,7 @@ export default function HomePage() {
                 }
               />
             </div>
-          </Reveal>
+          </AnimatedContent>
         </div>
       </div>
     </>

@@ -28,6 +28,19 @@
   width: 100%;
 }
 
+body::-webkit-scrollbar {
+  width: 5px;              
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;    
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #420083;  
+  border-radius: .5rem;         
+}
+
 body {
   margin: 0;
   display: flex;

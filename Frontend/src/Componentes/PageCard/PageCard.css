@@ -42,3 +42,9 @@
     background-color: rgba(46, 0, 114, 0.718);
   }
 }
+
+@media screen and (max-width: 530px) {
+  .page-card{
+    width: 90%;
+  }
+}

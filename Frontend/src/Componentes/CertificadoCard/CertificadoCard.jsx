@@ -1,27 +1,15 @@
-import styles from './styles.module.css'
+import './CertificadoCard.css'
 
-export default function CertificadoCard(props){
-  const tipos = {
-    "HTML": <p className={`${styles.html_Class} ${styles.area}`}>HTML</p>,
-    "CSS": <p className={`${styles.css_Class} ${styles.area}`}>CSS</p>,
-    "JS": <p className={`${styles.js_Class} ${styles.area}`}>JavaScript</p>,
-    "Python": <p className={`${styles.py_Class} ${styles.area}`}>Python</p>,
-    "TS": <p className={`${styles.ts_Class} ${styles.area}`}>TypeScript</p>,
-    "Sass": <p className={`${styles.sass_Class} ${styles.area}`}>Sass</p>
-  }
-
-  const areaCertificado = props.tipo in tipos ? tipos[props.tipo] : <p>{props.tipo}</p>
-
+export default function CertificadoCard({modalSituation, certId, certImg, certTitle, certLocal, buttonFunction}){
   return(
-    <div key={props.id} className={styles.card} onClick={props.modalSituation ? null : props.func}>
-      <div className={styles.card_components}>
-        <img src={props.img} alt="" className={styles.card_image}/>
-        <div className={styles.card_subcomponents}>
-          <div className={styles.card_infos}>
-            {areaCertificado}
-            <p className={styles.card_local}>{props.local}</p>
-          </div>
-        </div>
+    <div key={certId} className='cert-card' >
+      <img src={certImg} alt="" className='card-image'/>
+      <div className='cert-card-infos'>
+        <p className='cert-card-title'>{certTitle}</p>
+        <p className='cert-card-local'>{certLocal}</p>
+        <p onClick={modalSituation ? null : buttonFunction} className='cert-more-details'>
+          Ver detalhes &#129170;
+        </p>
       </div>
     </div>
   )

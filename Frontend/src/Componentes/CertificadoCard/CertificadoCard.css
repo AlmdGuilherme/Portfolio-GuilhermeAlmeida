@@ -1,0 +1,75 @@
+.cert-card{
+  width: 13rem;
+  height: 18rem;
+  background: rgb(17, 17, 17);
+  border-radius: .5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: .2rem;
+  filter: brightness(.8);
+  transition: .3s;  
+
+  &:hover{
+    background: rgb(51, 51, 51);
+    transform: translateY(-7.5px);
+    filter: brightness(1);
+  }
+}
+
+.card-image {
+  width: 70%;
+  height: auto;
+  border-radius: .2rem;
+  opacity: .5;
+  transition: .3s;
+}
+
+.cert-card:hover .card-image {
+  opacity: 1;
+}
+.cert-card-infos{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-more-details {
+  font-weight: 600;
+  padding: .3rem;
+  opacity: .6;
+  text-decoration: none;
+  cursor: pointer;
+  transition: linear opacity .3s, background-size .6s;
+  background: 
+  linear-gradient(to right, rgb(17, 17, 17)),
+  linear-gradient(to right, rgb(144, 0, 255), rgb(54, 0, 162), rgb(35, 0, 105));
+  background-size: 100% 0.1em, 0 0.1em;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+
+  &:hover, &:focus{
+    opacity: 1;
+    background-size: 0 0.1em, 100% 0.1em;
+  }
+}
+
+
+.cert-card-title{
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.1rem;
+}
+
+.cert-card-local{
+  opacity: .5;
+}

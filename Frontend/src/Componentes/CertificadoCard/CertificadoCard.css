@@ -73,3 +73,25 @@
 .cert-card-local{
   opacity: .5;
 }
+
+@media screen and (max-width: 750px) {
+    .cert-card {
+      width: 10rem;
+      height: 15rem;
+    }
+}
+
+@media screen and (max-width: 385px) {
+  .cert-card {
+    width: 8rem;
+    height: 12rem;
+  }
+
+  .cert-card-local {
+    display: none;
+  }
+
+  .cert-more-details {
+    font-size: .9rem;
+  }
+}

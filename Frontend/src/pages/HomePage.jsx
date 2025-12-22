@@ -1,16 +1,14 @@
-import { Link } from "react-router-dom";
-import DarkVeil from "../../Componentes/Backgrounds/DarkVeil/DarkVeil";
-import ProfileCard from "../../Componentes/ProfileCard/ProfileCard";
-import Folder from "../../Componentes/Components/Folder/Folder";
-import Carousel from "../../Componentes/Components/Carousel/Carousel";
-import LogoLoop from '../../Componentes/Animations/LogoLoop/LogoLoop'
-import InformationCard from "../../Componentes/InformationCard/InformationCard";
-import MoreInfosCard from "../../Componentes/MoreInfosCard/MoreInfosCard";
-import { ScreenWidth } from "../../hooks/ScreenWidth";
-import gsw from '../../assets/gsw.png'
-import pw from '../../assets/pw.png'
-import hp from '../../assets/helpnei.png'
-import AnimatedContent from "../../Componentes/Animations/AnimatedContent/AnimatedContent";
+import DarkVeil from "../Componentes/Backgrounds/DarkVeil/DarkVeil";
+import ProfileCard from "../Componentes/ProfileCard/ProfileCard";
+import Folder from "../Componentes/Components/Folder/Folder";
+import Carousel from "../Componentes/Components/Carousel/Carousel";
+import InformationCard from "../Componentes/InformationCard/InformationCard";
+import MoreInfosCard from "../Componentes/MoreInfosCard/MoreInfosCard";
+import { ScreenWidth } from "../hooks/ScreenWidth";
+import gsw from '../assets/gsw.png'
+import pw from '../assets/pw.png'
+import hp from '../assets/helpnei.png'
+import AnimatedContent from "../Componentes/Animations/AnimatedContent/AnimatedContent";
 
 export default function HomePage() {
   const screen = ScreenWidth()
@@ -61,8 +59,6 @@ export default function HomePage() {
       <div className="w-full h-auto flex flex-col overflow-hidden">
         <div className="w-full h-[100dvh] relative">
           <DarkVeil speed={1} />
-        </div>
-        <div className="w-full h-auto flex items-center justify-center absolute top-[15%]">
           <ProfileCard />
         </div>
         <div

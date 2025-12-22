@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom"
-import ReturnButton from "../../Componentes/ReturnButton/ReturnButton"
+import ReturnButton from "../Componentes/ReturnButton/ReturnButton"
 import { useEffect, useState } from "react"
-import Loader from '../../Componentes/Loader/Loader'
-import CertificationContent from "../../Componentes/CertificationContent/CertificationContent"
-import LetterGlitch from '../../Componentes/Backgrounds/LetterGlitch/LetterGlitch'
+import Loader from '../Componentes/Loader/Loader'
+import LetterGlitch from '../Componentes/Backgrounds/LetterGlitch/LetterGlitch'
 
 export default function CertificationPage() {
   const [certification, setCertification] = useState(null)

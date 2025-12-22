@@ -1,11 +1,8 @@
-import { Suspense } from "react";
-import Loader from './Componentes/Loader/Loader'
-import loadFormation from "./Loader/loadFormation";
 import RootLayout from "./pages/RootLayout";
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/AboutMe/HomePage";
-import FormacaoCertificado from "./pages/FormacaoPage/FormacaoPage";
-import CertificationPage from "./pages/CertificationPage/CertificationPage";
+import HomePage from "./pages/HomePage";
+import FormacaoCertificado from "./pages/FormacaoPage";
+import CertificationPage from "./pages/CertificationPage";
 import Skills from "./pages/Skills";
 
 const router = createBrowserRouter([
@@ -19,12 +16,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'formacao-academica',
-        element: (
-          <Suspense fallback={<Loader />}>
-            <FormacaoCertificado />
-          </Suspense>
-        ),
-        loader: loadFormation
+        element: <FormacaoCertificado />,
       },
       {
         path: 'habilidades',

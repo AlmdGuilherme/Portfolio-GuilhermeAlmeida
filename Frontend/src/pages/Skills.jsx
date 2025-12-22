@@ -13,8 +13,6 @@ export default function Skills() {
             outerVignette={true}
             smooth={true}
           />
-        </div>
-        <div className="w-full h-auto flex items-center justify-center absolute top-[40%]">
           <PageCard
             cardTitle="Competências técnicas"
             cardDescription="Veja um pouco mais das habilidades desenvolvidas e aprimoradas ao longo do caminho"

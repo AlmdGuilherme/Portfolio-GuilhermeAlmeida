@@ -17,10 +17,8 @@ export default function RootLayout() {
         <>
           <main className={styles.content}>
             <Outlet />
-          </main>
-          <footer className={styles.navigation}>
             <Navbar />
-          </footer>
+          </main>
         </>
       ) : (
         <>

@@ -38,51 +38,47 @@ export default function Navbar() {
   return (
     <nav id='navbar' className={`${screenWidth <= 768 ? styles.mobile_navbar : styles.Navbar}`}>
       <ul className={styles.navbar_itens}>
-        <li className={styles.navbar_item}>
+        <li className={`${styles.navbar_item} ${activeSection === "about-me" ? styles.active : ''}`}>
           <button
             onClick={() => scrollToSection("about-me")}
-            className={activeSection === "about-me" ? styles.active : ''}
           >
-            <ion-icon className='ion-icon' name="home-outline"></ion-icon>
+            <ion-icon className={`ion-icon ${styles.icon}`} name="home-outline"></ion-icon>
             <span>Sobre mim</span>
           </button>
         </li>
-        <li className={styles.navbar_item}>
+        <li className={`${styles.navbar_item} ${activeSection === "formacao-academica" ? styles.active : ''}`}>
           <button
             onClick={() => scrollToSection("formacao-academica")}
-            className={activeSection === "formacao-academica" ? styles.active : ''}
           >
-            <ion-icon className='ion-icon' name="school-outline"></ion-icon>
+            <ion-icon className={`ion-icon ${styles.icon}`} name="school-outline"></ion-icon>
             <span>Formação Academica</span>
           </button>
         </li>
-        <li className={styles.navbar_item}>
+        <li className={`${styles.navbar_item} ${activeSection === "certificados" ? styles.active : ''}`}>
           <button
             onClick={() => scrollToSection("certificados")}
-            className={activeSection === "certificados" ? styles.active : ''}
           >
-            <ion-icon className='ion-icon' name="documents-outline"></ion-icon>
-            <span>Certificaos</span>
+            <ion-icon className={`ion-icon ${styles.icon}`} name="documents-outline"></ion-icon>
+            <span>Certificados</span>
           </button>
         </li>
-        <li className={styles.navbar_item}>
+        <li className={`${styles.navbar_item} ${activeSection === "habilidades" ? styles.active : ''}`}>
           <button
             onClick={() => scrollToSection("habilidades")}
-            className={activeSection === "habilidades" ? styles.active : ''}
           >
-            <ion-icon className='ion-icon' name="code-slash-outline"></ion-icon>
+            <ion-icon className={`ion-icon ${styles.icon}`} name="code-slash-outline"></ion-icon>
             <span>Habilidades</span>
           </button>
         </li>
-        <li className={styles.navbar_item}>
+        <li className={`${styles.navbar_item} ${activeSection === "projetos" ? styles.active : ''}`}>
           <button
             onClick={() => scrollToSection("projetos")}
-            className={activeSection === "projetos" ? styles.active : ''}
           >
-            <ion-icon className='ion-icon' name="folder-open-outline"></ion-icon>
+            <ion-icon className={`ion-icon ${styles.icon}`} name="folder-open-outline"></ion-icon>
             <span>Projetos</span>
           </button>
         </li>
+        <div className={styles.indicator}></div>
       </ul>
     </nav>
   )

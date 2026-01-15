@@ -2,17 +2,6 @@
   scroll-behavior: smooth;
 }
 
-.navigation{
-  display: flex;
-  width: 100%;
-  background-color: transparent;
-  align-items: center;
-  justify-content: end;
-  position: fixed;
-  top: 0;
-  height: 4rem;
-  z-index: 3;
-} 
 
 .content{
   height: auto;
@@ -20,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 @media screen and (max-width: 769px) {

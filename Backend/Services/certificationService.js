@@ -29,3 +29,27 @@ export const fetchCertificationById = async (id) => {
     throw error
   }
 }
+
+export const fetchCertification = async () => {
+   const {data: certData, error: certError} = await supabase
+    .from('CertificadosInfos')
+    .select('*')
+    .order('cert_id', {ascending: true})
+
+    if (certError){
+      console.log('Erro ao buscar certificados no Supabase:', certError)
+      throw certError
+    }
+
+    const certificadosFormatados = certData.map(cert => ({
+      id: cert.cert_id,
+      imagem: cert.cert_image,
+      titulo: cert.cert_title,
+      local: cert.cert_location,
+      tempo: cert.carga_horaria,
+      conteudo: cert.conteudo, 
+      local_image: cert.location_image
+    }))
+
+    return certificadosFormatados
+}

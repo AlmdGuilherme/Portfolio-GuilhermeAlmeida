@@ -6,9 +6,9 @@ const path = require('path');
 const app = express();
 const supabase = require('./supabaseClient.js');
 const { aboubtPage } = require('./Services/aboutMeService.js');
-const { formAcadPage, allAcademicFormation } = require('./Services/formacaoAcademicaService.js');
+const { formAcadPage } = require('./Services/formacaoAcademicaService.js');
 const { habilidadesPage } = require('./Services/habilidadesServices.js');
-const { fetchCertificationById } = require('./Services/certificationService.js');
+const { fetchCertificationById, fetchCertification } = require('./Services/certificationService.js');
 
 let allowedOrigins = [
     'https://almdguilherme.github.io',
@@ -32,79 +32,34 @@ app.listen(PORT, () => {
     console.log(`Server rodando na porta ${PORT}`);
 });
 
-app.get('/api/aboutMePage', async (req, res) => {
-    try {
-        const data = await aboubtPage()
-
-        if (!data || !data.projeto || !data.certificados) {
-            return res.status(404).json({error: 'Dados não encontrados'})
-        }
-
-        res.status(200).json(data)
-    } catch (error) {
-        console.error('Erro inesperado ao buscar projetos e certificados:', error)
-        res.status(500).json({error: 'Erro no servidor interno!'})
-    }
-})
-
 app.get('/api/formacao-academica', async (req, res) => {
     try {
         const data = await formAcadPage()
 
-        if (!data || !data.formacao || !data.certificados) {
+        if (!data) {
             return res.status(404).json({error: 'Dados não encontrados'})
         }
 
         res.status(200).json(data)
     } catch (error) {
-        console.error('Erro inesperado ao buscar formações e certificados:', error)
+        console.error('Erro inesperado ao buscar formações:', error)
         res.status(500).json({error: 'Erro no servidor interno!'})
     }
 });
 
-app.get('/api/formacao-academica/todas-formacoes', async (req, res)=> {
+app.get('/api/certificados', async (req, res) => {
     try {
-        const data = await allAcademicFormation()
+        const data = await fetchCertification()
         if (!data) {
             return res.status(404).json({error: 'Dados não encontrados'})
         }
+
         res.status(200).json(data)
     } catch (error) {
-        console.error("Erro inesperado ao buscar formação acadêmica:", error)
+        console.error('Erro inesperado ao buscar certificados:', error)
         res.status(500).json({error: 'Erro no servidor interno!'})
     }
 })
-
-app.get('/api/certificado/:certId', async(req, res) => {
-    const certId = parseInt(req.params.certId);
-    try {
-        const data = await fetchCertificationById(certId)
-        if (!data) {
-            return res.status(404).json({error: 'Dados não econtrados'})
-        }
-
-        return res.status(200).json(data)
-    } catch (error) {
-        console.error('Erro inesperado ao buscar certificado:', error)
-        res.status(500).json({error: 'Erro inesperado no servidor interno!'})
-    }
-})
-
-app.get('/api/habilidades', async (req, res) => {
-    try {
-        const data = await habilidadesPage()
-
-        if (!data) {
-            return res.status(404).json({error: 'Dados não encontrados'})
-        }
-
-        res.status(200).json(data)
-    } catch (error) {
-        console.error('Erro inesperado ao buscar habilidades:', error)
-        res.status(500).json({error: 'Erro inesperado no servidor interno!'})
-    }
-});
-
 
 app.get('/api/projetos', async (req, res) => {
     try {

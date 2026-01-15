@@ -15,8 +15,7 @@ export const habilidadesPage = async () =>{
     const habilidadesFormatdas = data.map(hab => ({
       id: hab.skill_id,
       nome: hab.skill_name,
-      rgba: hab.rgba,
-      icon: hab.iconClass,
+      icon: hab.skill_icon,
       tipo: hab.skill_type
     }))
 

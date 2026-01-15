@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-.Navbar > ul > li > a{
+.Navbar > ul > li > button{
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -36,11 +36,11 @@
   color: rgba(255, 255, 255, .3);
 }
 
-.Navbar > ul > li > a:hover{
+.Navbar > ul > li > button:hover{
   color: rgba(255, 255, 255, .8);
 }
 
-.Navbar > ul > li > a > span{
+.Navbar > ul > li > button > span{
   overflow: hidden;
   text-align: left;
   width: 6.5rem;
@@ -86,7 +86,7 @@
   justify-content: center;
 }
 
-.mobile_navbar > ul > li > a{
+.mobile_navbar > ul > li > button{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,7 +95,7 @@
   font-size: 1.5rem;
 }
 
-.mobile_navbar > ul > li > a > span {
+.mobile_navbar > ul > li > button > span {
   font-size: .8rem;
   display: none;
 }

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const Loader = () => {
   return (
-    <div className="flex w-full h-[100dvh]  items-center justify-evenly">
+    <div className="flex w-full items-center justify-evenly">
       <BarLoader />
     </div>
   );

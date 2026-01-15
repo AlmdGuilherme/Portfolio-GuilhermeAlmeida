@@ -1,8 +1,10 @@
 .Navbar {
-  position: static;
+  position: fixed;
+  top: 0;
+  z-index: 1;
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 4rem;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, .8);
@@ -13,7 +15,6 @@
 .Navbar>ul {
   display: flex;
   width: 100%;
-  /* position: static; */
   gap: 1rem;
   align-items: center;
   justify-content: end;
@@ -48,7 +49,7 @@
   white-space: nowrap;
 }
 
-.Navbar>ul>li>.active {
+.Navbar>ul>li.active>button {
   color: rgba(255, 255, 255, 1);
 }
 
@@ -68,22 +69,23 @@
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 3rem;
   z-index: 1000;
-  padding: 1rem;
+  padding: 0 10px;
   box-shadow: inset 0px 0px 10px 1px #a5a5a5;
 }
 
 .mobile_navbar ul {
   display: flex;
-  width: 90%;
+  width: 100%;
+  position: relative;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .mobile_navbar ul li {
   position: relative;
   list-style: none;
+  flex: 1; 
   height: 70px;
-  width: 80px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -97,8 +99,9 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  text-align: center;
-  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .mobile_navbar ul li button .icon {
@@ -107,43 +110,58 @@
   line-height: 75px;
   font-size: 1.75rem;
   transition: .35s;
-  text-align: center;
   color: #fff;
 }
 
 .mobile_navbar ul li.active button .icon {
-  transform: translateY(-45px);
+  transform: translateY(-35px);
 }
 
 .mobile_navbar ul li button span {
   position: absolute;
-  color: #a5a5a5;
+  color: #fff;
   font-weight: 400;
   font-size: .75rem;
-  letter-spacing: .05rem;
   transition: .35s;
   opacity: 0;
+  transform: translateY(20px);
 }
 
 .mobile_navbar ul li.active button span {
   opacity: 1;
-  transform: translateY(10px);
+  transform: translateY(15px);
 }
 
 .indicator {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  top: -45%;
-  left: calc(50% - (80px * 2.5) + 10px);;
+  width: 55px;
+  height: 55px;
+  top: -30px;
   background-color: rgb(69, 0, 173);
-  box-shadow: 0px 0px 10px 5px rgb(36, 0, 90);
-  border-radius: 10rem;
-  transition: .35s;
+  box-shadow: 0px 0px 15px 5px rgb(69, 0, 173);
+  border-radius: 50%;
+  transition: .35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  left: 0;
 }
 
-.mobile_navbar ul li:nth-child(1).active ~ .indicator { transform: translateX(calc(80px * 0)); }
-.mobile_navbar ul li:nth-child(2).active ~ .indicator { transform: translateX(calc(80px * 1)); }
-.mobile_navbar ul li:nth-child(3).active ~ .indicator { transform: translateX(calc(80px * 2)); }
-.mobile_navbar ul li:nth-child(4).active ~ .indicator { transform: translateX(calc(80px * 3)); }
-.mobile_navbar ul li:nth-child(5).active ~ .indicator { transform: translateX(calc(80px * 4)); }
+.mobile_navbar ul li:nth-child(1).active ~ .indicator { left: calc(10% - 27.5px); }
+.mobile_navbar ul li:nth-child(2).active ~ .indicator { left: calc(30% - 27.5px); }
+.mobile_navbar ul li:nth-child(3).active ~ .indicator { left: calc(50% - 27.5px); }
+.mobile_navbar ul li:nth-child(4).active ~ .indicator { left: calc(70% - 27.5px); }
+.mobile_navbar ul li:nth-child(5).active ~ .indicator { left: calc(90% - 27.5px); }
+
+@media screen and (max-width: 501px) {
+  .mobile_navbar {
+    width: 95%;
+  }
+
+  .mobile_navbar ul li button span {
+    position: absolute;
+    color: #a5a5a5;
+    font-weight: 400;
+    font-size: .7rem;
+    transition: .35s;
+    opacity: 0;
+  }
+}

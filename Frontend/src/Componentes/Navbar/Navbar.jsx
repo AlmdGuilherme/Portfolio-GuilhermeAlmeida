@@ -36,7 +36,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav id='navbar' className={`${screenWidth <= 768 ? styles.mobile_navbar : styles.Navbar}`}>
+    <nav id='navbar' className={`${screenWidth <= 900 ? styles.mobile_navbar : styles.Navbar}`}>
       <ul className={styles.navbar_itens}>
         <li className={`${styles.navbar_item} ${activeSection === "about-me" ? styles.active : ''}`}>
           <button
@@ -78,7 +78,9 @@ export default function Navbar() {
             <span>Projetos</span>
           </button>
         </li>
-        <div className={styles.indicator}></div>
+        {screenWidth <= 900 && (
+          <div className={styles.indicator}></div>
+        )}
       </ul>
     </nav>
   )

@@ -47,7 +47,7 @@ export default function FormacaoPage() {
   return (
     <>
       <div className="w-full min-h-dvh h-auto bg-zinc-950 
-        flex flex-col gap-4 items-center max-md:pb-[8rem]"
+        flex flex-col gap-4 items-center"
         id="formacao-academica"
       >
         <div className="w-full p-[2rem]">

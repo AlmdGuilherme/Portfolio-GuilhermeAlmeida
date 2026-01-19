@@ -3,6 +3,7 @@ import ProfileCard from "../Componentes/ProfileCard/ProfileCard";
 import FormacaoPage from "./subpages/FormacaoPage";
 import AboutMePage from "./subpages/AboutMePage";
 import CertificationPage from "./subpages/CertificationPage";
+import SkillsPage from "./subpages/SkillsPage";
 
 export default function HomePage() {
   return (
@@ -21,6 +22,7 @@ export default function HomePage() {
         <AboutMePage/>
         <FormacaoPage/>
         <CertificationPage/>
+        <SkillsPage/>
       </div>
     </>
   );

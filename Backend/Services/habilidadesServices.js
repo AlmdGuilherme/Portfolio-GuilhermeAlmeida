@@ -1,6 +1,6 @@
 const supabase = require('../supabaseClient.js');
 
-export const habilidadesPage = async () =>{
+export const fetchSkills = async () =>{
   try{
     const {data, error} = await supabase
     .from('HabilidadesInfos')

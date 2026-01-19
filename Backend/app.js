@@ -7,8 +7,8 @@ const app = express();
 const supabase = require('./supabaseClient.js');
 const { aboubtPage } = require('./Services/aboutMeService.js');
 const { formAcadPage } = require('./Services/formacaoAcademicaService.js');
-const { habilidadesPage } = require('./Services/habilidadesServices.js');
-const { fetchCertificationById, fetchCertification } = require('./Services/certificationService.js');
+const { fetchSkills } = require('./Services/habilidadesServices.js');
+const { fetchCertification } = require('./Services/certificationService.js');
 
 let allowedOrigins = [
     'https://almdguilherme.github.io',
@@ -57,6 +57,18 @@ app.get('/api/certificados', async (req, res) => {
         res.status(200).json(data)
     } catch (error) {
         console.error('Erro inesperado ao buscar certificados:', error)
+        res.status(500).json({error: 'Erro no servidor interno!'})
+    }
+})
+
+app.get('/api/habilidades', async (req, res) => {
+    try {
+        const data = await fetchSkills()
+        if (!data) return res.status(404).json({error: 'Dados não encontrados'})
+        res.status(200).json(data)
+        
+    } catch (error) {
+        console.error('Erro inesperado ao buscar habilidades: ', error)
         res.status(500).json({error: 'Erro no servidor interno!'})
     }
 })

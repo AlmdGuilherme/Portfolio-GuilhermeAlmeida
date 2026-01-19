@@ -19,3 +19,13 @@ export const fetchCertification = async () => {
     throw error
   }
 }
+
+export const fetchHabilidades = async () => {
+  try {
+    const response = await fetch(`${baseUrl}habilidades`)
+    if (!response.ok) throw new Error("Erro ao buscar habilidades")
+    return await response.json();
+  } catch (error) {
+    throw error
+  }
+}

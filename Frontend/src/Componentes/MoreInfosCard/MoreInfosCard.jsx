@@ -1,13 +1,7 @@
+import RedirectButton from '../RedirectButton'
 import './MoreInfosCard.css'
-import { Link } from 'react-router-dom';
 
 export default function MoreInfosCard({title, description, buttonText, redirectId, component}){
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   return(
     <>
@@ -19,10 +13,10 @@ export default function MoreInfosCard({title, description, buttonText, redirectI
         <p>
           {description}
         </p>
-        <button onClick={() => scrollToSection(redirectId)}>
+        <RedirectButton redirectId={redirectId}>
           {buttonText}
           <ion-icon name="caret-forward-outline"></ion-icon>
-        </button>
+        </RedirectButton>
       </div>
       <div className='card-component'>
         {component}

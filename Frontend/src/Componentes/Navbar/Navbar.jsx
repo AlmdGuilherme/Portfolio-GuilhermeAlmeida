@@ -7,7 +7,7 @@ export default function Navbar() {
   const screenWidth = ScreenWidth()
 
   useEffect(() => {
-    const sections = ["about-me", "formacao-academica", "certificados", "habilidades", "projetos"]
+    const sections = ["about-me", "formacao-academica", "certificados", "projetos"]
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -50,8 +50,8 @@ export default function Navbar() {
           <button
             onClick={() => scrollToSection("formacao-academica")}
           >
-            <ion-icon className={`ion-icon ${styles.icon}`} name="school-outline"></ion-icon>
-            <span>Formação Academica</span>
+            <ion-icon className={`ion-icon ${styles.icon}`} name="code-slash-outline"></ion-icon>
+            <span>Formação e Habilidades</span>
           </button>
         </li>
         <li className={`${styles.navbar_item} ${activeSection === "certificados" ? styles.active : ''}`}>
@@ -60,14 +60,6 @@ export default function Navbar() {
           >
             <ion-icon className={`ion-icon ${styles.icon}`} name="documents-outline"></ion-icon>
             <span>Certificados</span>
-          </button>
-        </li>
-        <li className={`${styles.navbar_item} ${activeSection === "habilidades" ? styles.active : ''}`}>
-          <button
-            onClick={() => scrollToSection("habilidades")}
-          >
-            <ion-icon className={`ion-icon ${styles.icon}`} name="code-slash-outline"></ion-icon>
-            <span>Habilidades</span>
           </button>
         </li>
         <li className={`${styles.navbar_item} ${activeSection === "projetos" ? styles.active : ''}`}>

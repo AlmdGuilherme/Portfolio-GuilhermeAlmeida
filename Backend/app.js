@@ -5,10 +5,10 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 const supabase = require('./supabaseClient.js');
-const { aboubtPage } = require('./Services/aboutMeService.js');
 const { formAcadPage } = require('./Services/formacaoAcademicaService.js');
 const { fetchSkills } = require('./Services/habilidadesServices.js');
 const { fetchCertification } = require('./Services/certificationService.js');
+const { fetchProjects } = require('./Services/projectSevice.js')
 
 let allowedOrigins = [
     'https://almdguilherme.github.io',
@@ -37,13 +37,13 @@ app.get('/api/formacao-academica', async (req, res) => {
         const data = await formAcadPage()
 
         if (!data) {
-            return res.status(404).json({error: 'Dados não encontrados'})
+            return res.status(404).json({ error: 'Dados não encontrados' })
         }
 
         res.status(200).json(data)
     } catch (error) {
         console.error('Erro inesperado ao buscar formações:', error)
-        res.status(500).json({error: 'Erro no servidor interno!'})
+        res.status(500).json({ error: 'Erro no servidor interno!' })
     }
 });
 
@@ -51,70 +51,35 @@ app.get('/api/certificados', async (req, res) => {
     try {
         const data = await fetchCertification()
         if (!data) {
-            return res.status(404).json({error: 'Dados não encontrados'})
+            return res.status(404).json({ error: 'Dados não encontrados' })
         }
 
         res.status(200).json(data)
     } catch (error) {
         console.error('Erro inesperado ao buscar certificados:', error)
-        res.status(500).json({error: 'Erro no servidor interno!'})
+        res.status(500).json({ error: 'Erro no servidor interno!' })
     }
 })
 
 app.get('/api/habilidades', async (req, res) => {
     try {
         const data = await fetchSkills()
-        if (!data) return res.status(404).json({error: 'Dados não encontrados'})
+        if (!data) return res.status(404).json({ error: 'Dados não encontrados' })
         res.status(200).json(data)
-        
+
     } catch (error) {
         console.error('Erro inesperado ao buscar habilidades: ', error)
-        res.status(500).json({error: 'Erro no servidor interno!'})
+        res.status(500).json({ error: 'Erro no servidor interno!' })
     }
 })
 
 app.get('/api/projetos', async (req, res) => {
     try {
-        const { data, error } = await supabase
-            .from('ProjetosInfos')
-            .select(`
-                proj_id,
-                proj_situation,
-                proj_name,
-                proj_image,
-                proj_team,
-                proj_descricao,
-                proj_link,
-                TecnologiasProjetos (
-                    TecnologiasInfos (
-                        tech_id,
-                        tech_name,
-                        tech_icon
-                    )
-                )
-            `);
-
-        if (error) {
-            console.error('Erro ao buscar projetos do Supabase:', error);
-            return res.status(500).json({ error: error.message });
-        }
-        const projetosFormatados = data.map(projeto => ({
-            id: projeto.proj_id,
-            situation: projeto.proj_situation,
-            name: projeto.proj_name,
-            image: projeto.proj_image,
-            team: projeto.proj_team,
-            description: projeto.proj_descricao,
-            link: projeto.proj_link,
-            technologies: projeto.TecnologiasProjetos.map(tp => ({
-                id: tp.TecnologiasInfos.tech_id,
-                name: tp.TecnologiasInfos.tech_name,
-                icon: tp.TecnologiasInfos.tech_icon
-            }))
-        }));
-        res.status(200).json(projetosFormatados);
+        const data = await fetchProjects()
+        if (!data) return res.status(404).json({ error: "Dados não encontrados" })
+        res.status(200).json(data)
     } catch (error) {
-        console.error('Erro inesperado na rota /api/projetos:', error);
-        res.status(500).json({ error: 'Erro interno do servidor.' });
+        console.error("Erro inesperado ao buscar projetos!")
+        res.status(500).json({ error: 'Erro no servidor interno' })
     }
 });

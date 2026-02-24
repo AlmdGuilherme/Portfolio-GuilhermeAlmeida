@@ -12,28 +12,18 @@ export default function FormacaoCard({id, title, description, period, local, are
 
   return (
     <>
-      <div className={`${styles.form_card}`} key={id}>
-        <div className={`${styles.card_header}`}>
-          <span>
-            {icon}
-          </span>
-          <p>{title}</p>
+      <div className={styles.educational_card} key={id}>
+        <div className={styles.card_icon}>
+          {icon}
         </div>
-        <div className={`${styles.card_info}`}>
-          <div className={`${styles.card_sub_title}`}>
-            <p>{local}</p>
-            {"|"}
-            <p>{period}</p> 
-          </div>
-          <p className='text-sm text-justify'>{description}</p>
-          <button className={`${styles.more_btn}`} disabled>
-            Ver Mais
-          </button>
+        <div className={styles.card_title}>
+          {local}
+          {" | "}
+          {title}
         </div>
-        <div className={`${styles.form_card_border} ${styles.border_tl}`}></div>
-        <div className={`${styles.form_card_border} ${styles.border_tr}`}></div>
-        <div className={`${styles.form_card_border} ${styles.border_br}`}></div>
-        <div className={`${styles.form_card_border} ${styles.border_bl}`}></div>
+        <button className={styles.card_button}>
+          <ion-icon name="caret-forward-outline"></ion-icon>
+        </button>
       </div>
     </>
   )

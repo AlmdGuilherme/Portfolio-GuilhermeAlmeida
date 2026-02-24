@@ -1,23 +1,13 @@
-import { useState } from 'react'
-import './CertificadoCard.css'
+import styles from'./styles.module.css'
 
-export default function CertificadoCard({modalSituation, certId, certImg, certTitle, certLocal, buttonFunction}){
-  const [isMouseOn, setIsMouseOn] = useState(false)
+export default function CertificadoCard({ modalSituation, certId, certImg, certTitle, certLocal, buttonFunction }) {
 
-  console.log(isMouseOn)
-
-  return(
-    <div key={certId} className='cert-card' onMouseEnter={() => setIsMouseOn(true)} onMouseLeave={() => setIsMouseOn(false)}>
-      <img src={certImg} alt="" className='card-image'/>
-      <div className='cert-card-infos'>
-        <p className='cert-card-title'>{certTitle}</p>
-        {isMouseOn ? (
-          <p onClick={modalSituation ? null : buttonFunction} className='cert-more-details'>
-            Ver detalhes &#129170;
-          </p>
-        ) : (
-          <p className='cert-card-local'>{certLocal}</p>
-        )}
+  return (
+    <div key={certId} className={styles.certification_card} onMouseEnter={() => setIsMouseOn(true)} onMouseLeave={() => setIsMouseOn(false)}>
+      <img src={certImg} alt="" className={styles.card_image} />
+      <div className={styles.card_infos}>
+        <p className={styles.card_title}>{certTitle}</p>
+        <p className={styles.card_location}>{certLocal}</p>
       </div>
     </div>
   )

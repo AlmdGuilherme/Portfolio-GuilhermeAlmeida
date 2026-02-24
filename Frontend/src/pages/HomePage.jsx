@@ -1,9 +1,9 @@
 import LetterGlitch from "../Componentes/Backgrounds/LetterGlitch/LetterGlitch";
-import ProfileCard from "../Componentes/ProfileCard/ProfileCard";
+import ProfileCard from "../Componentes/ProfileCard";
 import FormacaoPage from "./subpages/FormacaoPage";
 import AboutMePage from "./subpages/AboutMePage";
 import CertificationPage from "./subpages/CertificationPage";
-import SkillsPage from "./subpages/SkillsPage";
+import ProjectsPage from "./subpages/ProjectsPage";
 
 export default function HomePage() {
   return (
@@ -22,7 +22,7 @@ export default function HomePage() {
         <AboutMePage/>
         <FormacaoPage/>
         <CertificationPage/>
-        <SkillsPage/>
+        <ProjectsPage/>
       </div>
     </>
   );

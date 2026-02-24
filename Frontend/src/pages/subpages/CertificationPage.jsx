@@ -55,40 +55,41 @@ export default function CertificationPage() {
 
   return (
     <>
-      <div className="w-full h-auto bg-zinc-950 
-        flex flex-col items-center justify-center"
+      <div className="w-full h-auto bg-zinc-950 flex flex-col gap-4 items-center pb-6"
         id="certificados"
       >
-        <div className="w-full p-[2rem]">
-          <h2 className="text-3xl font-bold font-[Roboto]">Certificados</h2>
-        </div>
-        <div className="w-full h-auto flex flex-wrap gap-4 items-center justify-center relative">
-          {state.loading ? (
-            <div className="h-[50dvh] flex flex-col items-center justify-center gap-2">
-              <Loader />
-              <h2 className="text-xl font-bold">Carregando certificados</h2>
-            </div>
-          ) : state.error ? (
-            <ErrorMessage message={state.error} />
-          ) : certificadosExibidos.map((cert) => (
-            <CertificadoCard
-              certId={cert.id}
-              certImg={OBC}
-              certLocal={cert.local}
-              certTitle={cert.titulo}
-              key={cert.id}
-            />
-          ))}
-          {!state.loading && !state.error && loadMore && (
-            <div className="w-full flex justify-center mt-8">
-              <button
-                onClick={() => dispatch({ type: ACTIONS.LOAD_MORE })}
-                className="px-6 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-md transition-colors font-medium border border-zinc-700"
-              >
-                Carregar (+{nextStep}) certificados
-              </button>
-            </div>
-          )}
+        <div className="w-[93%] h-auto flex flex-col flex-wrap gap-6 items-center justify-center relative">
+          <h2 className="w-fit border-l-4 border-purple-950 text-4xl font-bold p-2 self-start">
+            Certificados
+          </h2>
+          <div className="w-full h-auto flex flex-wrap gap-4 items-center relative">
+            {state.loading ? (
+              <div className="h-[50dvh] flex flex-col items-center justify-center gap-2">
+                <Loader />
+                <h2 className="text-xl font-bold">Carregando certificados</h2>
+              </div>
+            ) : state.error ? (
+              <ErrorMessage message={state.error} />
+            ) : certificadosExibidos.map((cert) => (
+              <CertificadoCard
+                certId={cert.id}
+                certImg={OBC}
+                certLocal={cert.local}
+                certTitle={cert.titulo}
+                key={cert.id}
+              />
+            ))}
+            {!state.loading && !state.error && loadMore && (
+              <div className="w-full flex justify-center">
+                <button
+                  onClick={() => dispatch({ type: ACTIONS.LOAD_MORE })}
+                  className="px-6 py-2 bg-[#2b006b80] hover:bg-[#4802b180] text-white rounded-md transition-colors font-medium border border-purple-900"
+                >
+                  Carregar (+{nextStep}) certificados
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

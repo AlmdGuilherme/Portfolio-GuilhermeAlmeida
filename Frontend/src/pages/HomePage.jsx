@@ -1,4 +1,4 @@
-import LetterGlitch from "../components/Backgrounds/LetterGlitch/LetterGlitch";
+import LetterGlitch from "../components/Backgrounds/LetterGlitch/LetterGlitch.jsx";
 import ProfileCard from "../components/ProfileCard";
 import FormacaoPage from "./subpages/FormacaoPage";
 import AboutMePage from "./subpages/AboutMePage";

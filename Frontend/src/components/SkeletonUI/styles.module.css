@@ -1,0 +1,19 @@
+.skeleton {
+  background-color: transparent;
+  border-radius: .25rem;
+  animation: pulse 1s infinite ease-in-out alternate;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgb(40, 40, 40);
+    opacity: 0.6;
+  }
+}
+
+.rect { border-radius: 4px; }
+.circle { border-radius: 50%; }
+.text { height: 0.8rem; margin-bottom: 0.5rem; width: 80%; }

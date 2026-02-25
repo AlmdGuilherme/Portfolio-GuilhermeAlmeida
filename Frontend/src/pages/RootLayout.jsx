@@ -5,11 +5,6 @@ import { ScreenWidth } from "../hooks/ScreenWidth";
 
 export default function RootLayout() {
   const screen = ScreenWidth();
-  // const [IsOpen, setIsOpen] = useState(false)
-
-  // const navbarAction = () => {
-  //   setIsOpen (state => !state)
-  // }
 
   return (
     <>

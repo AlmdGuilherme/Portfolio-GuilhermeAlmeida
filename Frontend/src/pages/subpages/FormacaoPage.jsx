@@ -1,9 +1,9 @@
-import FormacaoCard from "../../Components/FormacaoCard/FormacaoCard"
+import FormacaoCard from "../../components/FormacaoCard/FormacaoCard"
 import { fetchFormacaoAcademica, fetchHabilidades } from '../../Services/PortfolioServices'
 import { useEffect, useReducer } from "react"
-import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage"
-import SkeletonUI from '../../Components/SkeletonUI'
-import SkillIcon from "../../Components/SkillIcon/SkillIcon"
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import SkeletonUI from '../../components/SkeletonUI'
+import SkillIcon from "../../components/SkillIcon/SkillIcon"
 
 const ACTIONS = {
   START: 'start',

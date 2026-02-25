@@ -1,5 +1,5 @@
-import LetterGlitch from "../Components/Backgrounds/LetterGlitch/LetterGlitch";
-import ProfileCard from "../Components/ProfileCard";
+import LetterGlitch from "../components/Backgrounds/LetterGlitch/LetterGlitch";
+import ProfileCard from "../components/ProfileCard";
 import FormacaoPage from "./subpages/FormacaoPage";
 import AboutMePage from "./subpages/AboutMePage";
 import CertificationPage from "./subpages/CertificationPage";

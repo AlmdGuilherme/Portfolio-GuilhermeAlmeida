@@ -1,9 +1,9 @@
 import { useEffect, useReducer } from "react"
 import { fetchCertification } from "../../Services/PortfolioServices"
-import CertificadoCard from '../../Components/CertificadoCard/CertificadoCard'
-import Loader from "../../Components/Loader/Loader"
+import CertificadoCard from '../../components/CertificadoCard/CertificadoCard'
+import Loader from "../../components/Loader/Loader"
 import OBC from '../../assets/OneBitCode-Logo.png'
-import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage"
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 
 const ACTIONS = {
   START: 'start',

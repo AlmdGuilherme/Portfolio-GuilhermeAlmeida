@@ -1,14 +1,13 @@
-import MoreInfosCard from "../../Componentes/MoreInfosCard/MoreInfosCard"
-import Folder from "../../Componentes/Components/Folder/Folder"
-import Carousel from "../../Componentes/Components/Carousel/Carousel"
+import MoreInfosCard from "../../Components/MoreInfosCard/MoreInfosCard"
+import Folder from "../../Components/Folder/Folder"
+import Carousel from "../../Components/Carousel/Carousel"
 import gsw from '../../assets/gsw.png'
 import pw from '../../assets/pw.png'
 import hp from '../../assets/helpnei.png'
 import { ScreenWidth } from "../../hooks/ScreenWidth";
 import { useReducer, useEffect } from "react"
 import { fetchHabilidades } from "../../Services/PortfolioServices"
-import CountUp from "../../Componentes/CountUp/CountUp"
-import DataPreview from "../../Componentes/DataPreview"
+import DataPreview from "../../Components/DataPreview"
 
 const ACTIONS = {
   START: 'start',

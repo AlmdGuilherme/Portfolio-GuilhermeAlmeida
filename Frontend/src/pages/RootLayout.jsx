@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../Componentes/Navbar/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import styles from "./root.module.css";
 import { ScreenWidth } from "../hooks/ScreenWidth";
 

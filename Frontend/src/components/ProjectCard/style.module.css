@@ -1,0 +1,139 @@
+.project_card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: auto;
+  height: auto;
+  position: relative;
+}
+
+.project_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25rem;
+  height: 15rem;
+  overflow: hidden;
+  border-radius: .25rem;
+  position: relative;
+}
+
+.project_header > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.situation {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(10px, 10px);
+  padding: .25rem .5rem;
+  border-radius: 2rem;
+  font-size: .9rem;
+  font-weight: bold;
+
+}
+
+.concluded {
+  background-color: rgba(0, 255, 51, 0.5);
+  color: rgb(0, 97, 42);
+  backdrop-filter: blur(10px);
+}
+
+.project_infos {
+  width: 100%;
+  height: 15rem;
+  background-color: rgb(17, 17, 17);
+  border-radius: .25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .5rem;
+  padding: .5rem;
+}
+
+.project_infos > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buttons_section {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+.details_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: .8rem;
+  padding: .5rem;
+  border-radius: .25rem;
+  border: 2px solid rgba(69, 0, 173, 0.694);
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: .25s;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid rgba(46, 0, 114, 0.718);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    z-index: -1;
+    transition:  .25s ;
+    border-radius: 0 50% 100% 50%;
+  }
+
+  &:hover::before {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-color: rgba(46, 0, 114, 0.718);
+  }
+}
+
+.github_link {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: .7rem;
+  font-size: 1.3rem;
+  background-color: rgba(69, 0, 173, 0.694);
+  border-radius: .25rem;
+  transition: .3s;
+
+  &:hover {
+    background-color: rgba(46, 0, 114, 0.718);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .project_card {
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .project_header {
+    width: 100%;
+  }
+}

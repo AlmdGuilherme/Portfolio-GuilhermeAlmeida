@@ -4,6 +4,7 @@ import CertificadoCard from '../../components/CertificadoCard/CertificadoCard'
 import Loader from "../../components/Loader/Loader"
 import OBC from '../../assets/OneBitCode-Logo.png'
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import SkeletonUI from "../../components/SkeletonUI"
 
 const ACTIONS = {
   START: 'start',
@@ -62,12 +63,11 @@ export default function CertificationPage() {
           <h2 className="w-fit border-l-4 border-purple-950 text-4xl font-bold p-2 self-start">
             Certificados
           </h2>
-          <div className="w-full h-auto flex flex-wrap gap-4 items-center relative">
+          <div className="w-full h-auto flex flex-wrap gap-4 items-center justify-center relative">
             {state.loading ? (
-              <div className="h-[50dvh] flex flex-col items-center justify-center gap-2">
-                <Loader />
-                <h2 className="text-xl font-bold">Carregando certificados</h2>
-              </div>
+              Array.from({length: 13}).map((_, index) => (
+                <SkeletonUI width="21rem" height="5rem" key={index}/>
+              ))
             ) : state.error ? (
               <ErrorMessage message={state.error} />
             ) : certificadosExibidos.map((cert) => (

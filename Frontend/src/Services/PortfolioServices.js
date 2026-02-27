@@ -29,3 +29,13 @@ export const fetchHabilidades = async () => {
     throw error
   }
 }
+
+export const fetchProjetos = async () => {
+  try {
+    const response = await fetch(`${baseUrl}projetos`)
+    if (!response.ok) throw new Error("Erro ao buscar projetos")
+    return await response.json();
+  } catch (error) {
+    throw error
+  }
+}

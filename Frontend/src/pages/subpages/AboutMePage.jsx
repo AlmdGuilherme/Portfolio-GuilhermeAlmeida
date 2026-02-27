@@ -5,53 +5,10 @@ import gsw from '../../assets/gsw.png'
 import pw from '../../assets/pw.png'
 import hp from '../../assets/helpnei.png'
 import { ScreenWidth } from "../../hooks/ScreenWidth";
-import { useReducer, useEffect } from "react"
-import { fetchHabilidades } from "../../Services/PortfolioServices"
 import DataPreview from "../../components/DataPreview"
 
-const ACTIONS = {
-  START: 'start',
-  SUCCESS: 'success',
-  ERROR: 'error'
-}
-
-function reducer(state, action) {
-  switch (action.type) {
-    case ACTIONS.START:
-      return { ...state, loading: true }
-    case ACTIONS.SUCCESS:
-      return { loading: false, habilidades: action.payload, error: null }
-    case ACTIONS.ERROR:
-      return { loading: false, habilidades: [], error: action.payload }
-    default:
-      return state
-  }
-}
 
 export default function AboutMePage() {
-  const [state, dispatch] = useReducer(reducer, {
-    loading: true,
-    habilidades: [],
-    error: null
-  })
-
-  useEffect(() => {
-      const carregarDados = async () => {
-        dispatch({ type: ACTIONS.START })
-        try {
-          const res = await fetchHabilidades()
-          dispatch({ type: ACTIONS.SUCCESS, payload: res })
-        } catch (error) {
-          dispatch({ type: ACTIONS.ERROR, payload: error.message })
-        }
-      }
-      carregarDados();
-    }, [])
-  
-    const frontendSkills = state.habilidades.filter(skill => skill.tipo === "Frontend")
-    const backendSkills = state.habilidades.filter(skill => skill.tipo === "Backend")
-    const databaseSkills = state.habilidades.filter(skill => skill.tipo === "Database")
-    const softwareSkills = state.habilidades.filter(skill => skill.tipo === "Software")
 
   const screen = ScreenWidth()
   let folderSize = 1.7

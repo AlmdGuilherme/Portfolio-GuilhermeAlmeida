@@ -67,7 +67,7 @@ export default function FormacaoPage() {
           <h2 className="w-fit border-l-4 border-purple-950 text-4xl font-bold p-2 self-start">
             Formação e Habilidades
           </h2>
-          <div className="flex flex w-full">
+          <div className="flex w-full flex-wrap max-[1000px]:flex-col max-[1000px]:gap-4">
             <div className="flex flex-col gap-2 w-1/2 justify-center">
               {state.loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
@@ -89,10 +89,10 @@ export default function FormacaoPage() {
                 </>
               ))}
             </div>
-            <div className="flex flex-wrap gap-2 w-1/2 justify-center items-center">
+            <div className="flex flex-wrap gap-2 w-1/2 justify-center items-center max-[1000px]:w-full max-[1000px]:justify-evenly max-[1000px]:gap-y-4">
               {state.loading ? (
                 Array.from({ length: 24 }).map((_, index) => (
-                  <SkeletonUI height={"5.25rem"} width="5.5rem" key={index} variant="rect"/>
+                  <SkeletonUI height={"5.25rem"} width="5.5rem" key={index} variant="rect" />
                 ))
               ) : state.error ? (
                 <ErrorMessage message={state.error} />
@@ -100,6 +100,7 @@ export default function FormacaoPage() {
                 <>
                   {frontendSkills.map((skill) => (
                     <SkillIcon
+                      key={skill.id}
                       skillClass={skill.icon}
                       skillName={skill.nome}
                       skillType={skill.tipo}
@@ -107,6 +108,7 @@ export default function FormacaoPage() {
                   ))}
                   {backendSkills.map((skill) => (
                     <SkillIcon
+                      key={skill.id}
                       skillClass={skill.icon}
                       skillName={skill.nome}
                       skillType={skill.tipo}
@@ -114,6 +116,7 @@ export default function FormacaoPage() {
                   ))}
                   {databaseSkills.map((skill) => (
                     <SkillIcon
+                      key={skill.id}
                       skillClass={skill.icon}
                       skillName={skill.nome}
                       skillType={skill.tipo}
@@ -121,6 +124,7 @@ export default function FormacaoPage() {
                   ))}
                   {softwareSkills.map((skill) => (
                     <SkillIcon
+                      key={skill.id}
                       skillClass={skill.icon}
                       skillName={skill.nome}
                       skillType={skill.tipo}

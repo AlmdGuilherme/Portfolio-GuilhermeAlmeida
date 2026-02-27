@@ -47,6 +47,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   gap: .2rem;
   padding: .5rem;
   transition: .2s;
@@ -68,18 +69,18 @@
 }
 
 
-@media screen and (max-width: 700px) {
-    .cert-card {
-      width: 45%;
+@media screen and (max-width: 740px) {
+    .certification_card {
+      width: 48%;
+    }
+    
+    .card_infos {
+      width: 80%;
     }
 }
 
-@media screen and (max-width: 515px) {
-  .cert-card {
-    width: 80%;
-  }
-
-  .cert-more-details {
-    font-size: .9rem;
+@media screen and (max-width: 471px) {
+  .certification_card {
+    width: 95%;
   }
 }

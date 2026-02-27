@@ -75,7 +75,7 @@ app.get('/api/habilidades', async (req, res) => {
 
 app.get('/api/projetos', async (req, res) => {
     try {
-        const data = await fetchProjectsb()
+        const data = await fetchProjects()
         if (!data) return res.status(404).json({ error: "Dados não encontrados" })
         res.status(200).json(data)
     } catch (error) {

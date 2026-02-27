@@ -145,11 +145,10 @@
   left: 0;
 }
 
-.mobile_navbar ul li:nth-child(1).active ~ .indicator { left: calc(10% - 27.5px); }
-.mobile_navbar ul li:nth-child(2).active ~ .indicator { left: calc(30% - 27.5px); }
-.mobile_navbar ul li:nth-child(3).active ~ .indicator { left: calc(50% - 27.5px); }
-.mobile_navbar ul li:nth-child(4).active ~ .indicator { left: calc(70% - 27.5px); }
-.mobile_navbar ul li:nth-child(5).active ~ .indicator { left: calc(90% - 27.5px); }
+.mobile_navbar ul li:nth-child(1).active ~ .indicator { left: calc(25% * 0 + 12.5% - 27.5px); }
+.mobile_navbar ul li:nth-child(2).active ~ .indicator { left: calc(25% * 1 + 12.5% - 27.5px); }
+.mobile_navbar ul li:nth-child(3).active ~ .indicator { left: calc(25% * 2 + 12.5% - 27.5px); }
+.mobile_navbar ul li:nth-child(4).active ~ .indicator { left: calc(25% * 3 + 12.5% - 27.5px); }
 
 @media screen and (max-width: 501px) {
   .mobile_navbar {

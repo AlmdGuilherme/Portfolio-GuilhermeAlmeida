@@ -1,4 +1,3 @@
-import { hover } from '@testing-library/user-event/dist/hover'
 import styles from './styles.module.css'
 
 export default function LandingCard({ icon, title, description, width, height, left, top, index, perspective, yRotation, xRotation, gsap_class }) {

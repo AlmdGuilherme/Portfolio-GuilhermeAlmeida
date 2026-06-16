@@ -3,6 +3,7 @@ import RootLayout from "./Pages/RootLayout";
 import Home from "./Pages/Home";
 import Projects from "./Pages/Projects";
 import Project from "./Pages/Project";
+import { PageTransition } from "./Components/Page-Transition";
 
 const router = createBrowserRouter([
   {
@@ -11,14 +12,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: (
+          <PageTransition>
+            <Home />
+          </PageTransition>
+        )
       },
       {
         path: 'projetos',
-        element: <Projects />
-      }, {
+        element: (
+          <PageTransition>
+            <Projects />
+          </PageTransition>
+        )
+      }, 
+      {
         path: 'projetos/:id',
-        element: <Project />
+        element: (
+          <PageTransition>
+            <Project />
+          </PageTransition>
+        )
       }
     ]
   }

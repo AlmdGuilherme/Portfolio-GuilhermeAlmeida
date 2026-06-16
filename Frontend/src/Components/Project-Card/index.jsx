@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { wipeIn } from '../../Utils/animationTrigger'
 import styles from './styles.module.css'
 
 export default function ProjectCard({ id, name, situation, team, description, image }) {
+  const navigate = useNavigate()
 
   const situation_class = {
     "Não iniciado": styles.not_started,
@@ -10,6 +12,13 @@ export default function ProjectCard({ id, name, situation, team, description, im
   }
 
   const current_class = situation_class[situation]
+
+  const handleDetailsClick = () => {
+    wipeIn(() => {
+      navigate(`/projetos/${id}`)
+    })
+  }
+
   return (
     <>
       <div className={styles.project_card} key={id}>
@@ -34,9 +43,9 @@ export default function ProjectCard({ id, name, situation, team, description, im
           </p>
         </div>
         <img src={image} alt="" className={styles.project_image} />
-        <Link to={`/projetos/${id}`} className={styles.card_button}>
+        <button onClick={handleDetailsClick} className={styles.card_button}>
           Ver mais detalhes
-        </Link>
+        </button>
         <span className='border-l-[2px] border-b-[2px] border-sky-600 absolute left-[-1px] bottom-[-1px] h-8 w-8' />
         <span className='border-r-[2px] border-b-[2px] border-sky-600 absolute right-[-1px] bottom-[-1px] h-8 w-8' />
       </div>

@@ -3,6 +3,7 @@ import ProjectCard from "../../Components/Project-Card"
 import BackgroundEffect from "../../Components/Background-Effect"
 import { useEffect, useReducer, useRef } from "react"
 import { ProjectService } from '../../Services/ProjectService'
+import { wipeOut } from "../../Utils/animationTrigger"
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react'
 import MagicBento from "../../Components/Magic-Bento"
@@ -24,9 +25,9 @@ function reducer(state, action) {
     case ACTIONS.START:
       return { ...state, loading: true }
     case ACTIONS.SUCCESS:
-      return { ...state, loading: false, data: action.payload, error: null }
+      return { ...state, loading: false, data: action.payload ?? [], error: null }
     case ACTIONS.ERROR:
-      return { ...state, loading: false, data: null, error: action.payload }
+      return { ...state, loading: false, data: [], action: null, error: action.payload }
     default:
       return state
   }
@@ -74,6 +75,12 @@ export default function Projects() {
 
     loadProjects();
   }, [])
+
+  useEffect(() => {
+    if (!state.loading) {
+      wipeOut()
+    }
+  }, [state.loading])
 
   return (
     <>
@@ -126,7 +133,7 @@ export default function Projects() {
               <p className="text-white">Carregando...</p>
             ) : (
               <>
-                {state.data && state.data.map(proj => (
+                {Array.isArray(state?.data) && state.data.map(proj => (
                   <ProjectCard
                     key={proj.id}
                     id={proj.id}

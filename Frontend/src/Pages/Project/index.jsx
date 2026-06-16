@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react"
-import { Link, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ProjectService } from "../../Services/ProjectService"
+import { wipeIn, wipeOut } from "../../Utils/animationTrigger"
 
 const initialState = {
   loading: true,
@@ -30,6 +31,7 @@ function reducer(state, action) {
 export default function Project() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const loadProject = async () => {
@@ -44,16 +46,32 @@ export default function Project() {
     }
 
     loadProject()
-  }, [])
+  }, [id])
 
-  console.log(state?.data)
+  useEffect(() => {
+    if (!state.loading) {
+      wipeOut()
+    }
+  }, [state.loading])
+
+  const handleBackClick = (e) => {
+    e.preventDefault()
+    wipeIn(() => {
+      navigate("/projetos")
+    })
+  }
+
+  if (state.loading) {
+    return <div className="min-h-screen bg-[#120F17]" />
+  }
+
   return (
     <>
       <div className="relative w-full min-h-screen flex flex-col items-center gap-4 pt-10 pg-6 pb-8 overflow-hidden">
         <div className="w-[80%] flex flex-col gap-2">
-          <Link to={"/projetos"} className="text-lg text-[#676767] hover:text-[#1E40AF] duration-300">
+          <a href="/projetos" onClick={handleBackClick} className="text-lg text-[#676767] hover:text-[#1E40AF] duration-300">
             ← Voltar aos projetos
-          </Link>
+          </a>
           <span className="w-full h-[.5px] bg-[#373737] rounded-lg" />
         </div>
         <div className="w-[80%] flex justify-center gap-6">

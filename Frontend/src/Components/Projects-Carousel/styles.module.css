@@ -1,0 +1,78 @@
+.container {
+  width: 100%;
+  display: flex;
+  height: 20rem;
+  justify-content: space-between;
+  gap: 1rem;
+
+  .project_infos {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: center;
+    gap: 1rem;
+    text-align: justify;
+
+    .project_title {
+      color: #60A5FA;
+      font-size: 2rem;
+    }
+
+    .project_basic_infos {
+      display: flex;
+      gap: 1rem;
+      font-size: .8rem;
+
+      .team {
+        background-color: #1E293B;
+        color: #38BDF8;
+        padding: .5rem;
+        border: 1px solid #334155;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .function {
+        background-color: #2f1e3b;
+        color: #a238f8;
+        padding: .5rem;
+        border: 1px solid #413355;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .situation {
+        background-color: #14532D;
+        color: #4ADE80;
+        padding: .5rem;
+        border: 1px solid #236c3f;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .project_description {
+      color: #94A3B8;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+    }
+  }
+
+  .project_image {
+    width: 40%;
+    height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 16/4;
+  }
+}

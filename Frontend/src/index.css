@@ -2,43 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "DTGetaiGrotesk";
+  src: url("./Assets/Fonts/DTGetaiGroteskDisplay-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: "Montserrat", sans-serif; */
+  /* font-family: "Raleway", sans-serif; */
+   font-family: "Lexend", sans-serif;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "DTGetaiGrotesk", system-ui, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 1);
-  background-color: #070707;
-
+  color: #ffffff;
+  background-color: #191917;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Kodchasan", sans-serif;
-}
-
-#root{
-  width: 100%;
-}
-
-body::-webkit-scrollbar {
-  width: 5px;              
-}
-
-body::-webkit-scrollbar-track {
-  background: transparent;    
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #420083;  
-  border-radius: .5rem;         
 }
 
 body {
@@ -47,8 +40,23 @@ body {
   justify-content: center;
   min-width: 320px;
   width: 100%;
+  font-family: "DTGetaiGrotesk", system-ui, sans-serif;
+  background-color: #191917;
 }
 
-body > div > h2 {
-  font-family: "Roboto", sans-serif;
+#root {
+  width: 100%;
 }
+
+/* body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #420083;
+  border-radius: .5rem;
+} */

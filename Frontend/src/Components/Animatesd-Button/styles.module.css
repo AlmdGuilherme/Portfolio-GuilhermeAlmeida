@@ -1,0 +1,38 @@
+.animated_button {
+  width: fit-content;
+  border: 2px solid #1E40AF;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem 2rem;
+  color: #1E40AF;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.animated_span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 300px;
+  border-radius: 9999px;
+  background-color: #1E40AF;
+  pointer-events: none;
+  transform: scale(0);
+  z-index: 0;
+}
+
+.btn_text {
+  position: relative;
+  z-index: 1;
+  transition: .75s;
+}
+
+.animated_button:hover .btn_text {
+  color: #fff;
+}

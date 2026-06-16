@@ -1,0 +1,102 @@
+.project_card {
+  height: 27rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: space-evenly;  
+  background-color: #28365c88;
+  border: 1px solid #0800ff88;
+  font-family: "Lexend", sans-serif;
+  transition: .5s;
+  padding: .75rem;
+
+  .project_image {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: .75rem;
+  }
+
+  .project_data {
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+    justify-content: center;
+    gap: .5rem;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+
+      .project_title {
+        font-size: 1.3rem;
+        color: #fff;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .project_team {
+      font-size: .9rem;
+      color: #adadad;
+    }
+
+    .situation {
+      font-size: .75rem;
+      height: fit-content;
+      padding: .1rem .75rem;
+      border-radius: 1rem;
+    }
+
+    .not_started {
+      background-color: #50030357;
+      border: 1px solid #b20000;
+      color: #b20000;
+    }
+
+    .on_going {
+      background-color: #50390347;
+      border: 1px solid #af971e;
+      color: #af971e;
+    }
+
+    .concluded {
+      background-color: #03500957;
+      border: 1px solid #00B24D;
+      color: #00B24D;
+    }
+
+    .project_description {
+      font-size: .8rem;
+      text-align: justify;
+      color: #94A3B8;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+    }
+
+  }
+
+  .card_button {
+    width: 100%;
+    font-size: 1rem;
+    background-color: #1E40AF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    border-radius: .5rem;
+    transition: .25s;
+
+    &:hover {
+      background-color: #031550;
+    }
+  }
+}

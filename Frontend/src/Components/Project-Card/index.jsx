@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { wipeIn } from '../../Utils/animationTrigger'
+import { wipeIn } from '../../Utils/AnimationTrigger'
 import styles from './styles.module.css'
 
 export default function ProjectCard({ id, name, situation, team, description, image }) {

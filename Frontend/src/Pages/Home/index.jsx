@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react'
-import { wipeOut } from "../../Utils/animationTrigger"
+import { wipeOut } from "../../Utils/AnimationTrigger"
 import BackgroundEffect from "../../Components/Background-Effect"
 import AnimatedButton from "../../Components/Animatesd-Button"
 import SocialMediaButton from "../../Components/Social-Media-Button"

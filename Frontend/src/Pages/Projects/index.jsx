@@ -3,7 +3,7 @@ import ProjectCard from "../../Components/Project-Card"
 import BackgroundEffect from "../../Components/Background-Effect"
 import { useEffect, useReducer, useRef } from "react"
 import { ProjectService } from '../../Services/ProjectService'
-import { wipeOut } from "../../Utils/animationTrigger"
+import { wipeOut } from "../../Utils/AnimationTrigger"
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react'
 import MagicBento from "../../Components/Magic-Bento"

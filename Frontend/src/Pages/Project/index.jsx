@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { ProjectService } from "../../Services/ProjectService"
-import { wipeIn, wipeOut } from "../../Utils/animationTrigger"
+import { wipeIn, wipeOut } from "../../Utils/AnimationTrigger"
 
 const initialState = {
   loading: true,

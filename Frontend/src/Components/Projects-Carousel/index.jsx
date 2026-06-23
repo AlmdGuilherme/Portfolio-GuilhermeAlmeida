@@ -2,6 +2,7 @@ import { act, useEffect, useReducer, useState } from 'react'
 import styles from './styles.module.css'
 import { ProjectService } from '../../Services/ProjectService'
 import AnimatedButton from '../Animatesd-Button'
+import SkeletonUI from '../SkeletonUI'
 
 
 const initialState = {
@@ -65,32 +66,41 @@ export default function ProjectsCarousel() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.project_infos}>
-          <h2 className={styles.project_title}>
-            {activeProject?.nome}
-          </h2>
-          <div className={styles.project_basic_infos}>
-            <p className={styles.team}>
-              {activeProject?.time}
-            </p>
-            <p className={styles.function}>
-              {activeProject?.funcao}
-            </p>
-            <p className={styles.situation}>
-              {activeProject?.situacao}
-            </p>
-          </div>
-          <p className={styles.project_description}>
-            {activeProject?.descricao}
-          </p>
-          {activeProject?.link && (
-            <AnimatedButton
-              scroll_to={activeProject?.link}
-              text={"Ver projeto"}
-            />
-          )}
-        </div>
-        <img src={activeProject?.imagem} alt="" className={styles.project_image} />
+        {state.loading ? (
+          <SkeletonUI
+            height={"300px"}
+            variant={"rect"}
+          />
+        ) : (
+          <>
+            <div className={styles.project_infos}>
+              <h2 className={styles.project_title}>
+                {activeProject?.nome}
+              </h2>
+              <div className={styles.project_basic_infos}>
+                <p className={styles.team}>
+                  {activeProject?.time}
+                </p>
+                <p className={styles.function}>
+                  {activeProject?.funcao}
+                </p>
+                <p className={styles.situation}>
+                  {activeProject?.situacao}
+                </p>
+              </div>
+              <p className={styles.project_description}>
+                {activeProject?.descricao}
+              </p>
+              {activeProject?.link && (
+                <AnimatedButton
+                  scroll_to={activeProject?.link}
+                  text={"Ver projeto"}
+                />
+              )}
+            </div>
+            <img src={activeProject?.imagem} alt="" className={styles.project_image} />
+          </>
+        )}
       </div>
     </>
   )

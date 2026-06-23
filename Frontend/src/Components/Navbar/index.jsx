@@ -1,48 +1,25 @@
-import { useNavigate, useLocation } from 'react-router-dom'
-import { wipeIn } from '../../Utils/AnimationTrigger'
+import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 
 export default function Navbar() {
-  const navigate = useNavigate()
-  const location = useLocation()
-
-  const handleNavigation = (to) => {
-    if (!to || location.pathname === to) return
-    wipeIn(() => {
-      navigate(to)
-    })
-  }
-
   return (
     <nav className={styles.navbar}>
       <p>
         Guilherme Almeida
       </p>
       <ul className={styles.navbar_navigation}>
-        <button 
-          onClick={() => handleNavigation("/")} 
-          disabled={location.pathname === "/"}
-        >
+        <Link to={"/"}>
           Home
-        </button>
-        <button 
-          onClick={() => handleNavigation("/projetos")} 
-          disabled={location.pathname === "/projetos"}
-        >
+        </Link>
+        <Link to={"/projetos"}>
           Projetos
-        </button>
-        {/* <button 
-          onClick={() => handleNavigation("/experiencia")} 
-          disabled={location.pathname === "/experiencia"}
-        >
+        </Link>
+        <Link>
           Experiência
-        </button>
-        <button 
-          onClick={() => handleNavigation("/sobre")} 
-          disabled={location.pathname === "/sobre"}
-        >
+        </Link>
+        <Link>
           Sobre mim
-        </button> */}
+        </Link>
       </ul>
     </nav>
   )

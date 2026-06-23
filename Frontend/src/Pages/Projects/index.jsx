@@ -3,7 +3,6 @@ import ProjectCard from "../../Components/Project-Card"
 import BackgroundEffect from "../../Components/Background-Effect"
 import { useEffect, useReducer, useRef } from "react"
 import { ProjectService } from '../../Services/ProjectService'
-import { wipeOut } from "../../Utils/AnimationTrigger"
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react'
 import MagicBento from "../../Components/Magic-Bento"
@@ -25,9 +24,9 @@ function reducer(state, action) {
     case ACTIONS.START:
       return { ...state, loading: true }
     case ACTIONS.SUCCESS:
-      return { ...state, loading: false, data: action.payload ?? [], error: null }
+      return { ...state, loading: false, data: action.payload, error: null }
     case ACTIONS.ERROR:
-      return { ...state, loading: false, data: [], action: null, error: action.payload }
+      return { ...state, loading: false, data: null, error: action.payload }
     default:
       return state
   }
@@ -54,7 +53,8 @@ export default function Projects() {
         duration: 1.8,
         ease: "power3.inOut",
         stagger: 0.3,
-      }
+      },
+      "-=1"
     );
   }, {
     dependencies: [state.loading],
@@ -75,12 +75,6 @@ export default function Projects() {
 
     loadProjects();
   }, [])
-
-  useEffect(() => {
-    if (!state.loading) {
-      wipeOut()
-    }
-  }, [state.loading])
 
   return (
     <>
@@ -109,7 +103,7 @@ export default function Projects() {
             </p>
             <div className="w-[75%]">
               <AnimatedButton
-                scroll_to={"#resume"}
+                scroll_to={"#galery"}
                 text="Ver projetos →"
                 gsap_class="animated_btn"
               />
@@ -123,7 +117,7 @@ export default function Projects() {
             />
           </div>
         </div>
-        <div className="w-[90%] mt-10 z-[1] flex flex-col justify-center gap-4">
+        <div className="w-[90%] mt-10 z-[1] flex flex-col justify-center gap-4" id="galery">
           <h2 className="text-4xl leading-[1.5] w-fit tracking-widest">
             Galeria de <span className="text-[#1E40AF]">projetos</span>
           </h2>
@@ -133,7 +127,7 @@ export default function Projects() {
               <p className="text-white">Carregando...</p>
             ) : (
               <>
-                {Array.isArray(state?.data) && state.data.map(proj => (
+                {state.data && state.data.map(proj => (
                   <ProjectCard
                     key={proj.id}
                     id={proj.id}

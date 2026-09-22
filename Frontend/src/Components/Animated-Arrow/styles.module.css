@@ -1,0 +1,22 @@
+.animated-arrow {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%, -50%);
+  border: 1px solid #640D14;
+  padding: 1rem;
+  border-radius: 100%;
+  color: #9d131f;
+  animation: bouncing 3s ease-in-out infinite;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@keyframes bouncing {
+  0%, 100% {
+    transform: translateX(-50%) translateY(30%);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10%);
+  }
+}

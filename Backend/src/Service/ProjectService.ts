@@ -1,10 +1,10 @@
 import { supabase } from "../Database/SupabaseClient.js";
 
 export class ProjectService {
-  async landingPageProjects() {
+  async fetchProjects() {
     try {
       const { data, error } = await supabase.from('Project')
-        .select('id, situation, image, team, name, description, my_role, link')
+        .select('id, situation, image, team, name, description, my_role, link, project_cover')
         .order('id', { ascending: true })
 
       if (error) {
@@ -18,6 +18,7 @@ export class ProjectService {
         descricao: project.description,
         situacao: project.situation,
         imagem: project.image,
+        capa: project.project_cover,
         funcao: project.my_role,
         time: project.team,
         link: project.link

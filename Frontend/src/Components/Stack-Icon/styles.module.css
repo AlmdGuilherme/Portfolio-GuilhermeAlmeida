@@ -1,0 +1,46 @@
+.stack-icon {
+  background-color: rgba(100, 13, 20, .20);
+  border: 1px solid rgba(100, 13, 20, 1);
+  cursor: pointer;
+  overflow: hidden;
+  height: 4rem;
+  width: 4rem;
+  transition: .25s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    color: rgba(100, 13, 20, 1);
+    font-size: 2rem;
+    transition: .3s;
+  }
+
+  p {
+    position: absolute;
+    font-size: .75rem;
+    text-align: center;
+    color: rgba(100, 13, 20, 1);
+    opacity: 0;
+    transition: .25s;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+
+    i {
+      transform: translateY(-8px);
+    }
+
+    p {
+      opacity: 1;
+      transform: translateY(20px);
+    }
+  }
+}

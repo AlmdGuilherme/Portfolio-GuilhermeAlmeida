@@ -1,8 +1,8 @@
 .media_button {
-  border: 2px solid #1E40AF;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100rem;
+  border: 2px solid #640D14;
+  width: 2.8rem;
+  height: 2.8rem;
+  /* border-radius: .5rem; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,13 +10,13 @@
 
   svg {
     width: 1.5rem;
-    fill: #1E40AF;
+    fill: #640D14;
     transition: .5s;
   }
 
   &:hover {
-    background-color: #1E40AF;
-    box-shadow: 0 0 5px 0 #1E40AF;
+    background-color: #640D14;
+    box-shadow: 0 0 5px 0 #640D14;
     svg {
       fill: #fff;
     }

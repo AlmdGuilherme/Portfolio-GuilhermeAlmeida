@@ -56,19 +56,19 @@
 
     .not_started {
       background-color: #50030357;
-      border: 1px solid #b20000;
+      border: 1px solid rgb(108, 0, 0);
       color: #b20000;
     }
 
     .on_going {
       background-color: #50390347;
-      border: 1px solid #af971e;
+      border: 1px solid rgb(105, 108, 0);
       color: #af971e;
     }
 
     .concluded {
       background-color: #03500957;
-      border: 1px solid #00B24D;
+      border: 1px solid rgb(0, 108, 47);
       color: #00B24D;
     }
 

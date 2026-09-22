@@ -8,9 +8,9 @@ export class ProjectController {
     this.projectService = new ProjectService();
   }
 
-  async LandingPageProjects(request: FastifyRequest, reply: FastifyReply) {
+  async FetchProjects(request: FastifyRequest, reply: FastifyReply) {
     try {
-      const projects = await this.projectService.landingPageProjects();
+      const projects = await this.projectService.fetchProjects();
 
       return reply.status(200).send(projects)
     } catch (error: any) {

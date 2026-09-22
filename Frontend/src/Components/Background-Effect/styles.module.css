@@ -1,10 +1,9 @@
 .bg_effect {
-  width: 50rem;
-  height: 50rem;
+  width: 30rem;
+  height: 30rem;
   position: absolute;
-  border-radius: 9999px;
-  background: linear-gradient(to top right, #000100, #021249, #1E40AF);
-  opacity: 0.5;
-  filter: blur(100px);
+  border-radius: 100%;
+  filter: opacity(.5) blur(50px);
+  background: linear-gradient(to top right, #00010079, #49020286, #8500009c);
   pointer-events: none;
 }

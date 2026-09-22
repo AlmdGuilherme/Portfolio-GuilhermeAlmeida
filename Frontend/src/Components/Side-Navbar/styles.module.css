@@ -1,0 +1,44 @@
+.side-navbar {
+  color: #640D14;
+  font-size: 3rem;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    a {
+      cursor: pointer;
+      position: relative;
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #640D14;
+        transition: 0.3s ease;
+      }
+
+      span {
+        display: inline-block;
+        transition: 0.3s ease;
+      }
+
+      &:hover {
+
+        &::after {
+          width: calc(100% + 15px);
+          box-shadow: 0 5px 10px 1px #640D14;
+        }
+
+        span {
+          transform: translateX(-15px);
+        }
+      }
+    }
+  }
+}

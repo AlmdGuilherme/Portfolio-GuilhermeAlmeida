@@ -2,6 +2,8 @@ import fastify from 'fastify'
 import fastifyJwt from '@fastify/jwt'
 import fastifyCors from '@fastify/cors'
 import { ProjectController } from './Controller/ProjectController.js'
+import { StackController } from './Controller/StackController.js'
+import { AcademicController } from './Controller/AcademicController.js'
 
 class App {
   public app: fastify.FastifyInstance
@@ -38,6 +40,8 @@ class App {
 
   routes() {
     const projectController = new ProjectController();
+    const stackController = new StackController();
+    const academicController = new AcademicController();
 
     this.app.get('/', async (request, reply) => {
       return reply.status(200).send({
@@ -47,12 +51,20 @@ class App {
       })
     })
 
-    this.app.get('/projetos/landing-page', async (request, reply) => {
-      await projectController.LandingPageProjects(request, reply)
+    this.app.get('/projects-background', async (request, reply) => {
+      await projectController.FetchProjects(request, reply)
     })
 
     this.app.get('/projetos/:id', async (request, reply) => {
       await projectController.FetchProjectById(request, reply)
+    })
+
+    this.app.get('/my-stack', async (request, reply) => {
+      await stackController.FetchStack(request, reply)
+    })
+
+    this.app.get('/academic-background', async (request, reply) => {
+      await academicController.FetchTrainingHistory(request, reply)
     })
   }
 }

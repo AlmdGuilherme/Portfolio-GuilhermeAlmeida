@@ -1,9 +1,9 @@
 export class ProjectService {
-  baseUrl = "https://portfolio-backend-omega-woad.vercel.app/projetos"
+  baseUrl = "https://portfolio-backend-omega-woad.vercel.app"
 
-  async LandingPageProjects(){
+  async fetchProjects(){
     try {
-      const response = await fetch(`${this.baseUrl}/landing-page`, {
+      const response = await fetch(`${this.baseUrl}/projects-background`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -12,7 +12,7 @@ export class ProjectService {
 
       const data = await response.json()
 
-      if (!response.ok) throw new Error(data.message || "Erro ao buscar projetos para a Landing Page.")
+      if (!response.ok) throw new Error(data.message || "Ocorreu um erro ao buscar os projetos.")
 
       return data
     } catch (error) {

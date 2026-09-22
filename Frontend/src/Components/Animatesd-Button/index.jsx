@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import styles from './styles.module.css'
 
-export default function AnimatedButton({ text, scroll_to, gsap_class = '' }) {
+export default function AnimatedButton({ children, scroll_to, gsap_class = '' }) {
   const spanRef = useRef(null)
 
   function setPosition(e) {
@@ -49,7 +49,7 @@ export default function AnimatedButton({ text, scroll_to, gsap_class = '' }) {
       className={`${gsap_class} ${styles.animated_button}`}
     >
       <span ref={spanRef} className={styles.animated_span} />
-      <span className={styles.btn_text}>{text}</span>
+      <span className={styles.btn_text}>{children}</span>
     </a>
   )
 }

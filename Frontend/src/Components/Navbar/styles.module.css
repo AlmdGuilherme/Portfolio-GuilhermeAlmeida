@@ -4,31 +4,14 @@
   width: 100%;
   background: transparent;
   backdrop-filter: blur(10px);
-  color: #1E40AF;
+  color: #c2c6c6;
   align-items: center;
   justify-content: space-evenly;
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
 
   p {
     font-size: 1.2rem;
-  }
-}
-
-.navbar_navigation {
-  display: flex;
-  flex: .5;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: 1.1rem;
-
-  a {
-    cursor: pointer;
-    transition: .25s;
-
-    &:hover {
-      color: #fff;
-    }
   }
 }

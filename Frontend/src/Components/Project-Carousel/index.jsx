@@ -1,6 +1,8 @@
 import { useEffect, useReducer, useState } from 'react';
 import { ProjectService } from '../../Services/ProjectService'
 import styles from './styles.module.css';
+import ProjectCard from '../Project-Card';
+import ProjectPanel from '../Project-Panel';
 
 const initalState = {
   loading: true,
@@ -46,21 +48,34 @@ export default function ProjectsCarousel() {
     loadProjects()
   }, [])
 
+  const nextProject = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % state?.projects.length ?? 0)
+  }
+
+  const previousProject = () => {
+    setActiveIndex((prevIndex) => prevIndex === 0 ? state?.projects.length - 1 : prevIndex - 1)
+  }
+
+
   return (
     <>
       <div className={styles["project-carousel"]}>
-        <div className={styles["carousel-wrapper"]}>
-          <span className={styles["blur-effect"]}/>
-          <div className={styles["project-list"]}>
-            {state?.projects.map((proj, index) => (
-              <div className={styles["project-card"]} style={{ backgroundImage: `url(${proj.capa})` }}>
-
-              </div>
-            ))}
-          </div>
+        <div className={styles["left-wrapper"]}>
+          <ProjectCard
+            year={state?.projects[activeIndex]?.ano}
+            name={state?.projects[activeIndex]?.nome}
+            description={state?.projects[activeIndex]?.descricao}
+            situation={state?.projects[activeIndex]?.situacao}
+            team={state?.projects[activeIndex]?.time}
+            my_role={state?.projects[activeIndex]?.funcao}
+            advance_func={nextProject}
+            back_func={previousProject}
+            active_project={activeIndex}
+            total_projects={state?.projects.length ?? 0}
+          />
         </div>
-        <div>
-          {/* Canto direito */}
+        <div className={styles['right-wrapper']}>
+          <ProjectPanel />
         </div>
       </div>
     </>

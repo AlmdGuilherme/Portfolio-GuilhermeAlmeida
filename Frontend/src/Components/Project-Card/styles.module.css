@@ -1,102 +1,143 @@
-.project_card {
-  height: 27rem;
-  width: 25rem;
+.project-card {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(13, 11, 11, 0.93);
+  border: 1px solid rgb(61, 41, 43);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  justify-content: space-evenly;  
-  background-color: #28365c88;
-  border: 1px solid #0800ff88;
+  gap: 1rem;
   font-family: "Lexend", sans-serif;
-  transition: .5s;
-  padding: .75rem;
+  transition: 0.5s;
+  padding: 0.75rem;
 
-  .project_image {
-    width: 100%;
-    height: 10rem;
-    object-fit: cover;
-    border-radius: .75rem;
+  .project-year {
+    color: #e1535e;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
+    font-size: .75rem;
   }
 
-  .project_data {
+  .project-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: #CAC2B5;
+  }
+
+  .project-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: .9rem;
+    font-weight: 500;
+    text-align: justify;
+    color: #A69D94;
+    font-family: "Roboto Mono", monospace;
+  }
+  
+  .project-data {
+    width: 100%;
+    align-items: start;
+    justify-content: center;
     display: flex;
     flex-direction: column;
-    padding: .5rem;
-    justify-content: center;
-    gap: .5rem;
+    /* gap: .5rem; */
 
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: .5rem;
-
-      .project_title {
-        font-size: 1.3rem;
-        color: #fff;
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
+    label {
+      color: #e1535e;
+      font-size: .7rem;
+      font-family: "Roboto Mono", monospace;
+      font-weight: bold;
     }
-
-    .project_team {
-      font-size: .9rem;
-      color: #adadad;
-    }
-
-    .situation {
-      font-size: .75rem;
-      height: fit-content;
-      padding: .1rem .75rem;
-      border-radius: 1rem;
-    }
-
-    .not_started {
-      background-color: #50030357;
-      border: 1px solid rgb(108, 0, 0);
-      color: #b20000;
-    }
-
-    .on_going {
-      background-color: #50390347;
-      border: 1px solid rgb(105, 108, 0);
-      color: #af971e;
-    }
-
-    .concluded {
-      background-color: #03500957;
-      border: 1px solid rgb(0, 108, 47);
-      color: #00B24D;
-    }
-
-    .project_description {
+    
+    p {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
       font-size: .8rem;
-      text-align: justify;
-      color: #94A3B8;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      overflow: hidden;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      width: 7rem;
+      color: #CAC2B5;
     }
-
   }
 
-  .card_button {
-    width: 100%;
-    font-size: 1rem;
-    background-color: #1E40AF;
+  .card-button {
+    width: 3rem;
+    height: 3rem;
+    background-color: #100c0d;
+    border: 1px solid #6d5e5a;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .5rem;
-    border-radius: .5rem;
-    transition: .25s;
+    transition: 0.5s;
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      stroke: #a69d94;
+      stroke-width: 1.5px;
+      transition: 0.5s;
+    }
 
     &:hover {
-      background-color: #031550;
+      background-color: #3a0e11;
+      border: 1px solid #e1535e;
+
+      svg {
+        stroke: #f0ece7;
+      }
+    }
+  }
+
+  /* .redirect-button {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #100c0d;
+    border: 1px solid #6d5e5a;
+    padding: 0 1.5rem 0 1rem;
+    letter-spacing: 10%;
+    color: #a69d94;
+    transition: 0.5s;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      stroke: #a69d94;
+      stroke-width: 1.5px;
+      transition: 0.5s;
+    }
+
+    &:hover {
+      background-color: #3a0e11;
+      border: 1px solid #e1535e;
+      box-shadow: 0 0 10px 5px #3a0e11;
+      color: #f0ece7;
+
+      svg {
+        stroke: #f0ece7;
+        transform: translateX(15px);
+      }
+    }
+  } */
+
+  .projects-progress {
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: flex-end; 
+
+    p {
+      font-size: 1.5rem;
+      letter-spacing: 5px;
+      color: #CAC2B5;
     }
   }
 }
